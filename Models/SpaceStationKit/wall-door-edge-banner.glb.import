@@ -38,6 +38,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bdc66v6nqyl3e"
 }
+},
+"nodes": {
+"PATH:wall-door-edge-banner": {
+"generate/physics": true
+}
 }
 }
 gltf/naming_version=1
