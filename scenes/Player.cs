@@ -30,7 +30,7 @@ public partial class Player : CharacterBody3D
                 if (heldObject is RigidBody3D body) body.Freeze = false;
                 holdLocation.RemoveChild(heldObject);
                 GetTree().Root.AddChild(heldObject);
-                heldObject.Position = holdLocation.GlobalPosition;
+                heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
             }
         }
     }
