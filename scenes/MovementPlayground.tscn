@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://col1w7s253asj"]
+
+[ext_resource type="PackedScene" uid="uid://5nokwqpiltnp" path="res://Models/SpaceStationKit/floor.glb" id="1_ae7en"]
+
+[node name="MovementPlayground" type="Node3D"]
+
+[node name="floor2" parent="." instance=ExtResource("1_ae7en")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
