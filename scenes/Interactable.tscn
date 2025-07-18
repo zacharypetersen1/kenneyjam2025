@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://x1ly2gdhw5f1"]
 
 [ext_resource type="Script" uid="uid://d11eyi742m3i4" path="res://scenes/Interactable.cs" id="1_c6f01"]
-[ext_resource type="PackedScene" uid="uid://d1m7x1jkda8em" path="res://Models/SpaceKit/barrel.glb" id="2_0iwdk"]
+[ext_resource type="PackedScene" uid="uid://c2p31so200vdt" path="res://Models/SpaceStationKit/container-tall.glb" id="3_efa16"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_0iwdk"]
-height = 0.25
-radius = 0.1
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efa16"]
+radius = 0.15
+height = 0.6
 
 [node name="Interactable" type="RigidBody3D"]
 script = ExtResource("1_c6f01")
 
-[node name="barrel2" parent="." instance=ExtResource("2_0iwdk")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-shape = SubResource("CylinderShape3D_0iwdk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257714, 0)
+shape = SubResource("CapsuleShape3D_efa16")
+
+[node name="container-tall2" parent="." instance=ExtResource("3_efa16")]
+transform = Transform3D(0.5, 0, 0, 0, 0.6, 0, 0, 0, 0.5, 0, 0, 0)
