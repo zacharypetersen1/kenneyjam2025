@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="KenneyJam2025"
-run/main_scene="uid://dwf7qidlnwa4k"
+run/main_scene="uid://dv7ugmxp2wh7o"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=2
 
 [dotnet]
 
