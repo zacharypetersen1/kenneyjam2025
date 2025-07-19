@@ -3,7 +3,7 @@ using System;
 
 public partial class Compartment : StaticBody3D
 {
-    public Interactable Inserted = null;
+    public Interactable Inserted { get; set; }
 
     [Export]
     public int PowerDraw = 1;

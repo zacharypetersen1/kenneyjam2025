@@ -3,8 +3,7 @@ using System;
 
 public partial class Interactable : RigidBody3D
 {
-    public bool isPlaced = false;
-    public Compartment compartment = null;
+    public Compartment Compartment { get; set; }
 
     public double MaxCharge = 100;
     public double Charge = 100;
@@ -12,17 +11,15 @@ public partial class Interactable : RigidBody3D
 
     public void Place(Compartment compartment)
     {
-        isPlaced = true;
-        this.compartment = compartment;
+        this.Compartment = compartment;
         compartment.Inserted = this;
         DischargeRate = compartment.PowerDraw;
     }
 
     public void Remove()
     {
-        compartment.RemoveChild(this);
-        isPlaced = false;
-        compartment.Inserted = null;
+        Compartment.RemoveChild(this);
+        Compartment.Inserted = null;
         DischargeRate = 0;
         GD.Print(Charge);
     }

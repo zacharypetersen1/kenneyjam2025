@@ -18,7 +18,7 @@ public partial class Player : CharacterBody3D
                 var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Interactable);
                 if (target is Interactable interactable)
                 {
-                    if (interactable.isPlaced)
+                    if (interactable.Compartment is not null)
                     {
                         interactable.Remove();
                     }
@@ -46,7 +46,7 @@ public partial class Player : CharacterBody3D
                 {
                     if (heldObject is RigidBody3D body) body.Freeze = false;
                     holdLocation.RemoveChild(heldObject);
-                    GetTree().Root.AddChild(heldObject);
+                    GetTree().CurrentScene.AddChild(heldObject);
                     if(target is Window window)
                     {
                         var relativePos = window.ToLocal(Position);
