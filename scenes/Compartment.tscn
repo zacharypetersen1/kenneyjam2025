@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://nes42k5wbx7o"]
+
+[ext_resource type="Script" uid="uid://jaxmjkmdbo3r" path="res://scenes/Compartment.cs" id="1_l1h3h"]
+[ext_resource type="PackedScene" uid="uid://21sp2n0ftqdr" path="res://Models/SpaceStationKit/skip.glb" id="2_d23g8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8erq"]
+size = Vector3(0.5, 0.35, 0.7)
+
+[node name="Compartment" type="StaticBody3D"]
+script = ExtResource("1_l1h3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+shape = SubResource("BoxShape3D_e8erq")
+
+[node name="skip2" parent="." instance=ExtResource("2_d23g8")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)

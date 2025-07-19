@@ -12,12 +12,16 @@ public partial class Player : CharacterBody3D
         if (@event.IsActionPressed("interact"))
         {
             var holdLocation = GetNode<Node3D>("HoldLocation");
-            var heldObject = holdLocation.GetChildren().FirstOrDefault() as Node3D;
+            var heldObject = holdLocation.GetChildren().FirstOrDefault() as Interactable;
             if (heldObject is null)
             {
                 var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Interactable);
                 if (target is Interactable interactable)
                 {
+                    if(interactable.isPlaced)
+                    {
+                        interactable.Remove();
+                    }
                     interactable.Freeze = true;
                     interactable.GetParent().RemoveChild(interactable);
                     interactable.Rotation = new();
@@ -27,10 +31,21 @@ public partial class Player : CharacterBody3D
             }
             else
             {
-                if (heldObject is RigidBody3D body) body.Freeze = false;
-                holdLocation.RemoveChild(heldObject);
-                GetTree().Root.AddChild(heldObject);
-                heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
+                var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Compartment);
+                if(target is Compartment compartment)
+                {
+                    heldObject.Place(compartment);
+                    holdLocation.RemoveChild(heldObject);
+                    compartment.AddChild(heldObject);
+                    heldObject.Position = new();
+                }
+                else
+                {
+                    if (heldObject is RigidBody3D body) body.Freeze = false;
+                    heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
+                    holdLocation.RemoveChild(heldObject);
+                    GetTree().Root.AddChild(heldObject);
+                }
             }
         }
     }
