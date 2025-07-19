@@ -41,7 +41,6 @@ offset_bottom = 720.0
 [node name="Play" type="Button" parent="CenterContainer"]
 layout_mode = 2
 disabled = true
-text = "Play
-"
+text = "Join Game To Start"
 
 [connection signal="pressed" from="CenterContainer/Play" to="." method="Play"]
