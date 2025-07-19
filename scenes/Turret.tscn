@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://cugp5stpbtduw"]
+[gd_scene load_steps=8 format=4 uid="uid://cugp5stpbtduw"]
 
 [ext_resource type="PackedScene" uid="uid://btgvd15dqrpem" path="res://Models/SpaceKit/turret_double.glb" id="1_76wwe"]
 [ext_resource type="Script" uid="uid://vgvo0sbmmwrr" path="res://scenes/Turret.cs" id="1_tbwx1"]
+[ext_resource type="PackedScene" uid="uid://da3xv4bwmo45y" path="res://scenes/Rocket.tscn" id="2_1l7md"]
 [ext_resource type="Material" uid="uid://bdc66v6nqyl3e" path="res://Materials/SpaceStationKit.tres" id="2_4sggw"]
 [ext_resource type="Material" uid="uid://b63rncp0xmuj0" path="res://Materials/TurretLight.tres" id="3_tbwx1"]
 
@@ -39,10 +40,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ejj2w")
 
-[node name="Turret" type="Node3D" node_paths=PackedStringArray("light1", "light2")]
+[node name="Turret" type="Node3D" node_paths=PackedStringArray("light1", "light2", "muzzles")]
 script = ExtResource("1_tbwx1")
 light1 = NodePath("Light1")
 light2 = NodePath("Light2")
+muzzles = [NodePath("Muzzle1"), NodePath("Muzzle2")]
+rocketBlueprint = ExtResource("2_1l7md")
 
 [node name="turret_double2" parent="." instance=ExtResource("1_76wwe")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -58,3 +61,9 @@ transform = Transform3D(0.277835, 0, 0, 0, 0.277835, 0, 0, 0, 0.450159, 0.565, 1
 mesh = SubResource("ArrayMesh_1l7md")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_tbwx1")
+
+[node name="Muzzle1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.707477, 1.13248, 0)
+
+[node name="Muzzle2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.707, 1.132, 0)

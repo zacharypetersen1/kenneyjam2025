@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://bqk4cn75aa5yi"]
+
+[sub_resource type="Curve" id="Curve_relkg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.09135, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_362k0"]
+curve = SubResource("Curve_relkg")
+
+[resource]
+emission_shape_scale = Vector3(0, 0, 0)
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 0, 50)
+initial_velocity_max = 2.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 81.91
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_362k0")

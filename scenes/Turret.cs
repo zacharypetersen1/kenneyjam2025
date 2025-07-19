@@ -3,6 +3,7 @@ using System;
 
 public partial class Turret : Node3D
 {
+    int rocketsFired = 0;
     [Export]
     public float fireRate = 1;
     [Export]
@@ -15,6 +16,10 @@ public partial class Turret : Node3D
     public MeshInstance3D light1;
     [Export]
     public MeshInstance3D light2;
+    [Export]
+    public Node3D[] muzzles = new Node3D[2];
+    [Export]
+    public PackedScene rocketBlueprint; 
     StandardMaterial3D mat;
     float cooldown;
 
@@ -45,15 +50,32 @@ public partial class Turret : Node3D
         if(isPowered)
         {
             cooldown = Mathf.Max(0, cooldown - (float)delta);
-            if(cooldown <= 0)
+            EnemyShip target = GameManager.inst.GetLowestHPShipInDir(aimDir);
+            if(target is not null)
             {
-                EnemyShip target = GameManager.inst.GetLowestHPShipInDir(aimDir);
-                if(target is not null)
+                LookAt(target.GlobalPosition, new Vector3(0, 1, 0));
+                if(cooldown <= 0)
                 {
-                    target.TakeDamage(1);
+                    Rocket rocket = rocketBlueprint.Instantiate() as Rocket;
+                    GetTree().CurrentScene.AddChild(rocket);
+                    Node3D muzzle = muzzles[rocketsFired % 2];
+                    rocketsFired++;
+                    rocket.GlobalPosition = muzzle.GlobalPosition;
+                    rocket.GlobalRotation = muzzle.GlobalRotation;
+                    rocket.initialPos = muzzle.GlobalPosition;
+                    rocket.targetPos = target.GetParent<Node3D>().GlobalPosition;
+                    rocket.target = target;
                     cooldown = fireRate;
                 }
             }
+            else
+            {
+                //Rotation = new();
+            }
+        }
+        else
+        {
+            //Rotation = new();
         }
     }
 }

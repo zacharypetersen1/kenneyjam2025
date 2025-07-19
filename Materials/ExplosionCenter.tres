@@ -1,0 +1,18 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://banduyleu2bgy"]
+
+[sub_resource type="Curve" id="Curve_2u7w5"]
+_data = [Vector2(0, 0), 0.0, 7.27923, 0, 0, Vector2(0.247396, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0898807, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0xqe4"]
+curve = SubResource("Curve_2u7w5")
+
+[resource]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_0xqe4")
