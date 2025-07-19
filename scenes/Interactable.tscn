@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://x1ly2gdhw5f1"]
+[gd_scene load_steps=13 format=4 uid="uid://x1ly2gdhw5f1"]
 
 [ext_resource type="Script" uid="uid://d11eyi742m3i4" path="res://scenes/Interactable.cs" id="1_c6f01"]
 [ext_resource type="Material" uid="uid://bdc66v6nqyl3e" path="res://Materials/SpaceStationKit.tres" id="2_0iwdk"]
 [ext_resource type="Script" uid="uid://blyoyi2lr88fk" path="res://scenes/Flash.cs" id="3_efa16"]
+[ext_resource type="Script" uid="uid://x4k2hvf1dbjh" path="res://scenes/BatteryUI.cs" id="4_evwdf"]
+[ext_resource type="Texture2D" uid="uid://dotlp8r3jhl5c" path="res://Textures/bar_square_large.png" id="4_tl3c8"]
+[ext_resource type="Texture2D" uid="uid://bf4ef20iweyem" path="res://Textures/bar_square_gloss_large.png" id="5_gxjlj"]
+[ext_resource type="Texture2D" uid="uid://k2tot5rdcpc7" path="res://Textures/arrow_decorative_n.png" id="6_gxjlj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efa16"]
 radius = 0.188
@@ -93,3 +97,58 @@ mesh = SubResource("ArrayMesh_db2vg")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_0iwdk")
 script = ExtResource("3_efa16")
+
+[node name="UI" type="Node3D" parent="." node_paths=PackedStringArray("scaler", "barFG", "battery", "arrowUp", "arrowDown")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+script = ExtResource("4_evwdf")
+scaler = NodePath("FlipLOL/Scaler")
+barFG = NodePath("FlipLOL/Scaler/FG")
+battery = NodePath("..")
+arrowUp = NodePath("FlipLOL/ArrowUp")
+arrowDown = NodePath("FlipLOL/ArrowDown")
+
+[node name="FlipLOL" type="Node3D" parent="UI"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BG" type="Sprite3D" parent="UI/FlipLOL"]
+modulate = Color(0.332881, 0.332881, 0.332881, 1)
+render_priority = 1
+texture = ExtResource("4_tl3c8")
+
+[node name="BG2" type="Sprite3D" parent="UI/FlipLOL"]
+transform = Transform3D(1.11412, 0, 1.42109e-14, 0, 1.34948, 0, -1.42109e-14, 0, 1.03767, 0, 0, 0)
+modulate = Color(0, 0, 0, 0.584314)
+texture = ExtResource("4_tl3c8")
+
+[node name="Scaler" type="Node3D" parent="UI/FlipLOL"]
+transform = Transform3D(1, 0, 0, 0, 0.999, 0, 0, 0, 0.999, -0.48, 0, 0)
+
+[node name="FG" type="Sprite3D" parent="UI/FlipLOL/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 0, 0)
+modulate = Color(1, 1, 0, 1)
+render_priority = 2
+texture = ExtResource("5_gxjlj")
+
+[node name="ArrowDown" type="Sprite3D" parent="UI/FlipLOL"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -0.75, 0, 0)
+flip_v = true
+modulate = Color(1, 0.501961, 0.501961, 1)
+render_priority = 1
+texture = ExtResource("6_gxjlj")
+
+[node name="ArrowDownBG" type="Sprite3D" parent="UI/FlipLOL/ArrowDown"]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -5.96046e-08, 0, -7.10543e-15)
+flip_v = true
+modulate = Color(0, 0, 0, 0.501961)
+texture = ExtResource("6_gxjlj")
+
+[node name="ArrowUp" type="Sprite3D" parent="UI/FlipLOL"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -0.75, 0, 0)
+modulate = Color(1, 1, 0, 1)
+render_priority = 1
+texture = ExtResource("6_gxjlj")
+
+[node name="ArrowDownBG" type="Sprite3D" parent="UI/FlipLOL/ArrowUp"]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -5.96046e-08, 0, -7.10543e-15)
+modulate = Color(0, 0, 0, 0.501961)
+texture = ExtResource("6_gxjlj")
