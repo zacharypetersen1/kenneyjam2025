@@ -20,6 +20,8 @@ public partial class GameManager : Node
     public Node3D[] southEnemySpots = new Node3D[3];
     [Export]
     public Node3D[] westEnemySpots = new Node3D[3];
+    [Export]
+    public Node3D[] PlayerSpawnPoints = [];
 
     Dictionary<ThreatDir, Node3D[]> enemySpots = new Dictionary<ThreatDir, Node3D[]>();
     Dictionary<ThreatDir, EnemyShip[]> enemyShips = new Dictionary<ThreatDir, EnemyShip[]>();
@@ -32,36 +34,47 @@ public partial class GameManager : Node
 
     public void Initialize()
     {
+        SpawnPlayers();
         InactivateCompartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
         enemySpots.Add(ThreatDir.North, northEnemySpots);
         enemySpots.Add(ThreatDir.East, eastEnemySpots);
         enemySpots.Add(ThreatDir.South, southEnemySpots);
         enemySpots.Add(ThreatDir.West, westEnemySpots);
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             enemyShips.Add((ThreatDir)i, new EnemyShip[3]);
         }
 
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 SpawnEnemyShip((ThreatDir)i);
             }
         }
     }
 
+    public void SpawnPlayers()
+    {
+        for (var i = 0; i < Players.PlayerIds.Count; i++)
+        {
+            var player = Player.SpawnPlayer(Players.PlayerIds[i], Players.Colors[i]);
+            player.Position = PlayerSpawnPoints[i].Position;
+            GetTree().CurrentScene.AddChild(player);
+        }
+    }
+
     public override void _Process(double delta)
     {
-        //GD.Print(Health);
         if (Health > 0)
         {
             if (ActiveCompartments.Count == 0 && InactivateCompartments.Count > 0) ActivateNext();
             for (var i = 0; i < ActiveCompartments.Count; i++)
             {
                 var compartment = ActiveCompartments[i];
-                if (compartment.Active) {
+                if (compartment.Active)
+                {
                     if (!compartment.CanDrain()) Health = Math.Max(0, Health - delta * compartment.PowerDraw);
                     else if (compartment.Drain(delta))
                     {
@@ -95,9 +108,9 @@ public partial class GameManager : Node
 
     public bool IsSpotAvailable(ThreatDir dir)
     {
-        for(int i = 0; i < enemyShips[dir].Count(); i++)
+        for (int i = 0; i < enemyShips[dir].Count(); i++)
         {
-            if(enemyShips[dir][i] is null)
+            if (enemyShips[dir][i] is null)
             {
                 return true;
             }
@@ -107,13 +120,13 @@ public partial class GameManager : Node
 
     public void SpawnEnemyShip(ThreatDir dir)
     {
-        if(!IsSpotAvailable(dir))
+        if (!IsSpotAvailable(dir))
             return;
 
         int chosenSpot = -1;
-        for(int i = 0; i < enemyShips[dir].Count(); i++)
+        for (int i = 0; i < enemyShips[dir].Count(); i++)
         {
-            if(enemyShips[dir][i] is null)
+            if (enemyShips[dir][i] is null)
             {
                 chosenSpot = i;
                 break;

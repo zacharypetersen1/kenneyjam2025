@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv7ugmxp2wh7o"]
+[gd_scene load_steps=9 format=3 uid="uid://dv7ugmxp2wh7o"]
 
 [ext_resource type="PackedScene" uid="uid://5nokwqpiltnp" path="res://Models/SpaceStationKit/floor.glb" id="1_ae7en"]
 [ext_resource type="PackedScene" uid="uid://bweblfif2bjc0" path="res://Models/SpaceStationKit/wall.glb" id="2_vcr3f"]
-[ext_resource type="PackedScene" uid="uid://dwf7qidlnwa4k" path="res://scenes/Player.tscn" id="6_gnj84"]
 [ext_resource type="PackedScene" uid="uid://x1ly2gdhw5f1" path="res://scenes/Interactable.tscn" id="7_13hj0"]
 [ext_resource type="PackedScene" uid="uid://j76ilx47fa74" path="res://scenes/GameManager.tscn" id="7_heu5x"]
 [ext_resource type="PackedScene" uid="uid://nes42k5wbx7o" path="res://scenes/Compartment.tscn" id="7_imhth"]
@@ -111,10 +110,6 @@ transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 16, 2, -0.3, 0)
 [node name="floor3" parent="StaticGeo" instance=ExtResource("1_ae7en")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 14, -0.3, 0)
 
-[node name="Player" parent="." instance=ExtResource("6_gnj84")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 3)
-Speed = 5
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gnj84")
 
@@ -142,12 +137,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0,
 [node name="Window6" parent="." instance=ExtResource("8_imhth")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, 1.5)
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("northEnemySpots", "eastEnemySpots", "southEnemySpots", "westEnemySpots") instance=ExtResource("7_heu5x")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("northEnemySpots", "eastEnemySpots", "southEnemySpots", "westEnemySpots", "PlayerSpawnPoints") instance=ExtResource("7_heu5x")]
 enemyShipBlueprint = ExtResource("8_heu5x")
 northEnemySpots = [NodePath("../EnemyWaypoints/North1"), NodePath("../EnemyWaypoints/North2"), NodePath("../EnemyWaypoints/North3")]
 eastEnemySpots = [NodePath("../EnemyWaypoints/East1"), NodePath("../EnemyWaypoints/East2"), NodePath("../EnemyWaypoints/East3")]
 southEnemySpots = [NodePath("../EnemyWaypoints/South1"), NodePath("../EnemyWaypoints/South2"), NodePath("../EnemyWaypoints/South3")]
 westEnemySpots = [NodePath("../EnemyWaypoints/West1"), NodePath("../EnemyWaypoints/West2"), NodePath("../EnemyWaypoints/West3")]
+PlayerSpawnPoints = [NodePath("../PlayerSpawnPoints/PlayerSpawn"), NodePath("../PlayerSpawnPoints/PlayerSpawn2"), NodePath("../PlayerSpawnPoints/PlayerSpawn3"), NodePath("../PlayerSpawnPoints/PlayerSpawn4")]
 
 [node name="EnemyWaypoints" type="Node3D" parent="."]
 
@@ -186,5 +182,19 @@ transform = Transform3D(0.397612, 0, -0.917553, 0, 1, 0, 0.917553, 0, 0.397612, 
 
 [node name="West3" type="Node3D" parent="EnemyWaypoints"]
 transform = Transform3D(-0.406434, 0, -0.91368, 0, 1, 0, 0.91368, 0, -0.406434, 19.0536, 9.53674e-07, 7.37782)
+
+[node name="PlayerSpawnPoints" type="Node3D" parent="."]
+
+[node name="PlayerSpawn" type="Marker3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41811, 0, 4.35538)
+
+[node name="PlayerSpawn2" type="Marker3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23673, 0, 4.35538)
+
+[node name="PlayerSpawn3" type="Marker3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12035, 0, 4.35538)
+
+[node name="PlayerSpawn4" type="Marker3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.980295, 0, 4.35538)
 
 [connection signal="ready" from="." to="GameManager" method="Initialize"]

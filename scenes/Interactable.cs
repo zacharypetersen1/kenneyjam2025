@@ -20,7 +20,6 @@ public partial class Interactable : RigidBody3D
     {
         Compartment.Inserted = null;
         DischargeRate = 0;
-        GD.Print(Charge);
     }
 
     public override void _Process(double delta)
