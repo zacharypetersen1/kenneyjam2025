@@ -34,7 +34,7 @@ public partial class Player : CharacterBody3D
             }
             else
             {
-                var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Compartment);
+                var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Compartment or Window);
                 if(target is Compartment compartment)
                 {
                     heldObject.Place(compartment);
@@ -47,7 +47,16 @@ public partial class Player : CharacterBody3D
                     if (heldObject is RigidBody3D body) body.Freeze = false;
                     holdLocation.RemoveChild(heldObject);
                     GetTree().Root.AddChild(heldObject);
-                    heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
+                    if(target is Window window)
+                    {
+                        var relativePos = window.ToLocal(Position);
+                        float offset = relativePos.Z > 0 ? -1 : 1;
+                        heldObject.GlobalPosition = window.ToGlobal(new Vector3(0, 0, offset));
+                    }
+                    else
+                    {
+                        heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
+                    }
                 }
             }
         }
