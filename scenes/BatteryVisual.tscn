@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb151vpgm33f7"]
+
+[ext_resource type="PackedScene" uid="uid://c2p31so200vdt" path="res://Models/SpaceStationKit/container-tall.glb" id="1_3ipdc"]
+
+[node name="container-tall2" instance=ExtResource("1_3ipdc")]
