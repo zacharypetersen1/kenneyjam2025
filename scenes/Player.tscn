@@ -5,28 +5,26 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cij07"]
 radius = 0.2
-height = 0.6
+height = 0.8
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_p0vlq"]
-height = 0.5
-radius = 0.3
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6fml"]
+size = Vector3(0.4, 0.8, 0.4)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_p0vlq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_cij07")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.999566, 0, 0, 0, 0.999566, 0, 0, 0, 0.999566, 0, -0.25, 0)
-shape = SubResource("CylinderShape3D_p0vlq")
+transform = Transform3D(0.999566, 0, 0, 0, 0.999566, 0, 0, 0, 0.999566, 0.4, 0.4, 0)
+shape = SubResource("BoxShape3D_v6fml")
 
 [node name="AstronautA" parent="." instance=ExtResource("2_v6fml")]
-transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="HoldLocation" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.4, 0)

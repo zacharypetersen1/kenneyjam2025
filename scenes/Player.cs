@@ -18,12 +18,15 @@ public partial class Player : CharacterBody3D
                 var target = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Interactable);
                 if (target is Interactable interactable)
                 {
-                    if(interactable.isPlaced)
+                    if (interactable.isPlaced)
                     {
                         interactable.Remove();
                     }
+                    else
+                    {
+                        interactable.GetParent().RemoveChild(interactable);
+                    }
                     interactable.Freeze = true;
-                    interactable.GetParent().RemoveChild(interactable);
                     interactable.Rotation = new();
                     interactable.Position = holdLocation.Position;
                     holdLocation.AddChild(interactable);
@@ -42,9 +45,9 @@ public partial class Player : CharacterBody3D
                 else
                 {
                     if (heldObject is RigidBody3D body) body.Freeze = false;
-                    heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
                     holdLocation.RemoveChild(heldObject);
                     GetTree().Root.AddChild(heldObject);
+                    heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
                 }
             }
         }
