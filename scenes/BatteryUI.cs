@@ -32,11 +32,11 @@ public partial class BatteryUI : Node3D
         }
         arrowUp.Visible = false;
         arrowDown.Visible = false;
-        if(battery.DischargeRate > 0)
+        if(battery.Charge > 0 && battery.DischargeRate > 0)
         {
             arrowDown.Visible = true;
         }
-        if(battery.DischargeRate < 0)
+        if(battery.Charge < battery.MaxCharge && battery.DischargeRate < 0)
         {
             arrowUp.Visible = true;
         }
