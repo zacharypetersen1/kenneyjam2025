@@ -10,6 +10,8 @@ public enum ThreatDir
 
 public partial class GameManager : Node
 {
+    public static GameManager inst;
+
     [Export]
     public PackedScene enemyShipBlueprint;
     [Export]
@@ -34,6 +36,7 @@ public partial class GameManager : Node
 
     public void Initialize()
     {
+        inst = this;
         SpawnPlayers();
         InactivateCompartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
         enemySpots.Add(ThreatDir.North, northEnemySpots);
@@ -134,9 +137,31 @@ public partial class GameManager : Node
         }
         Node3D chosenNode = enemySpots[dir][chosenSpot];
         EnemyShip enemyShip = enemyShipBlueprint.Instantiate() as EnemyShip;
+        enemyShip.dir = dir;
+        enemyShip.spot = chosenSpot;
         enemyShips[dir][chosenSpot] = enemyShip;
         chosenNode.AddChild(enemyShip);
         enemyShip.Position = new Vector3(0, 0, -200);
         enemyShip.Rotation = new();
+    }
+
+    public EnemyShip GetLowestHPShipInDir(ThreatDir dir)
+    {
+        EnemyShip res = null;
+        float lowestHp = float.MaxValue;
+        for(int i = 0; i < enemyShips[dir].Count(); i++)
+        {
+            if(enemyShips[dir][i] != null && enemyShips[dir][i].hp < lowestHp)
+            {
+                res = enemyShips[dir][i];
+                lowestHp = enemyShips[dir][i].hp;
+            }
+        }
+        return res;
+    }
+
+    public void ClearEnemyShipSpot(ThreatDir dir, int spot)
+    {
+        enemyShips[dir][spot] = null;
     }
 }
