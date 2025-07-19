@@ -53,3 +53,8 @@ mesh = SubResource("ArrayMesh_yhkey")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_d23g8")
 script = ExtResource("3_e8erq")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="Activate"]

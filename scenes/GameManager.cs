@@ -5,23 +5,34 @@ using Godot;
 
 public partial class GameManager : Node
 {
-    public List<Compartment> Compartments = [];
+    public List<Compartment> InactivateCompartments = [];
+
+    public List<Compartment> ActiveCompartments = [];
 
     public double Health = 100;
 
     public void Initialize()
     {
-        Compartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
+        InactivateCompartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
     }
 
     public override void _Process(double delta)
     {
-        GD.Print(Health);
+        //GD.Print(Health);
         if (Health > 0)
         {
-            foreach (var compartment in Compartments)
+            if (ActiveCompartments.Count == 0 && InactivateCompartments.Count > 0) ActivateNext();
+            for (var i = 0; i < ActiveCompartments.Count; i++)
             {
-                if (!compartment.Drain()) Health = Math.Max(0, Health - delta * compartment.PowerDraw); ;
+                var compartment = ActiveCompartments[i];
+                if (compartment.Active) {
+                    if (!compartment.CanDrain()) Health = Math.Max(0, Health - delta * compartment.PowerDraw);
+                    else if (compartment.Drain(delta))
+                    {
+                        Deactivate(compartment);
+                        i--;
+                    }
+                }
             }
         }
         else
@@ -29,5 +40,20 @@ public partial class GameManager : Node
             GD.Print("Game Over!");
             SetProcess(false);
         }
+    }
+
+    public void ActivateNext()
+    {
+        var next = InactivateCompartments[Random.Shared.Next(0, InactivateCompartments.Count)];
+        InactivateCompartments.Remove(next);
+        ActiveCompartments.Add(next);
+        next.Queue(5, Random.Shared.Next(5, 10));
+    }
+
+    public void Deactivate(Compartment compartment)
+    {
+        ActiveCompartments.Remove(compartment);
+        InactivateCompartments.Add(compartment);
+        compartment.Deactivate();
     }
 }
