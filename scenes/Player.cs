@@ -39,7 +39,8 @@ public partial class Player : CharacterBody3D
                     heldBattery.Place(targetCompartment);
                     holdLocation.RemoveChild(heldBattery);
                     targetCompartment.AddChild(heldBattery);
-                    heldBattery.Position = new();
+                    heldBattery.Position = new Vector3(0, 0.5f, 0);
+                    heldBattery.Rotation = new Vector3(Mathf.DegToRad(90), 0 , 0);
                 }
                 else
                 {
