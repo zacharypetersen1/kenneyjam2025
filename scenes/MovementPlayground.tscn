@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://5nokwqpiltnp" path="res://Models/SpaceStationKit/floor.glb" id="1_ae7en"]
 [ext_resource type="PackedScene" uid="uid://bweblfif2bjc0" path="res://Models/SpaceStationKit/wall.glb" id="2_vcr3f"]
-[ext_resource type="PackedScene" uid="uid://x1ly2gdhw5f1" path="res://scenes/Interactable.tscn" id="7_13hj0"]
+[ext_resource type="PackedScene" uid="uid://x1ly2gdhw5f1" path="res://scenes/Battery.tscn" id="7_13hj0"]
 [ext_resource type="PackedScene" uid="uid://j76ilx47fa74" path="res://scenes/GameManager.tscn" id="7_heu5x"]
 [ext_resource type="PackedScene" uid="uid://nes42k5wbx7o" path="res://scenes/Compartment.tscn" id="7_imhth"]
 [ext_resource type="PackedScene" uid="uid://bl0ncr5u7yl7r" path="res://scenes/EnemyShip.tscn" id="8_heu5x"]
@@ -215,7 +215,6 @@ transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.957, 0.7, 5)
 
 [node name="Turret" parent="." node_paths=PackedStringArray("compartment") instance=ExtResource("11_h3kco")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1, 5)
-aimDir = 1
 compartment = NodePath("../Compartment")
 
 [node name="PlayerSpawnPoints" type="Node3D" parent="."]

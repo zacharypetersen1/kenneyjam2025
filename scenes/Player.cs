@@ -15,8 +15,8 @@ public partial class Player : CharacterBody3D
 
     [Export]
     public int Speed = 10;
-    Interactable heldBattery = null;
-    Interactable targetBattery = null;
+    Battery heldBattery = null;
+    Battery targetBattery = null;
     Compartment targetCompartment = null;
     Window targetWindow = null;
 
@@ -117,10 +117,10 @@ public partial class Player : CharacterBody3D
         if (direction.LengthSquared() > 0) Rotation = new Vector3(0, -direction.Angle(), 0);
         MoveAndSlide();
 
-        Interactable newTargetBattery = null;
+        Battery newTargetBattery = null;
         if (heldBattery is null)
         {
-            newTargetBattery = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Interactable) as Interactable;
+            newTargetBattery = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Battery) as Battery;
         }
         if (newTargetBattery != targetBattery)
         {

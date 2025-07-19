@@ -8,7 +8,7 @@ public partial class BatteryUI : Node3D
     [Export]
     public Sprite3D barFG;
     [Export]
-    public Interactable battery;
+    public Battery battery;
     [Export]
     public Sprite3D arrowUp;
     [Export]

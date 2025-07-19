@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://x1ly2gdhw5f1"]
 
-[ext_resource type="Script" uid="uid://d11eyi742m3i4" path="res://scenes/Interactable.cs" id="1_c6f01"]
+[ext_resource type="Script" uid="uid://d11eyi742m3i4" path="res://scenes/Battery.cs" id="1_c6f01"]
 [ext_resource type="Material" uid="uid://bdc66v6nqyl3e" path="res://Materials/SpaceStationKit.tres" id="2_0iwdk"]
 [ext_resource type="Script" uid="uid://blyoyi2lr88fk" path="res://scenes/Flash.cs" id="3_efa16"]
 [ext_resource type="Script" uid="uid://x4k2hvf1dbjh" path="res://scenes/BatteryUI.cs" id="4_evwdf"]
@@ -80,7 +80,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sd5ty")
 
-[node name="Interactable" type="RigidBody3D"]
+[node name="Battery" type="RigidBody3D"]
 script = ExtResource("1_c6f01")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

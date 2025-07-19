@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Interactable : RigidBody3D
+public partial class Battery : RigidBody3D
 {
     public Compartment Compartment { get; set; }
 
