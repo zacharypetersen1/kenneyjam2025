@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl0ncr5u7yl7r"]
+[gd_scene load_steps=3 format=3 uid="uid://bl0ncr5u7yl7r"]
 
+[ext_resource type="Script" uid="uid://driafxxw5vm88" path="res://scenes/EnemyShip.cs" id="1_2dxw2"]
 [ext_resource type="PackedScene" uid="uid://de4nreju8j33h" path="res://Models/SpaceKit/craft_speederC.glb" id="1_suvnd"]
 
 [node name="EnemyShip" type="Node3D"]
+script = ExtResource("1_2dxw2")
 
 [node name="craft_speederC2" parent="." instance=ExtResource("1_suvnd")]
 transform = Transform3D(-2, 0, 3.01992e-07, 0, 2, 0, -3.01992e-07, 0, -2, 0, 0, 0)
