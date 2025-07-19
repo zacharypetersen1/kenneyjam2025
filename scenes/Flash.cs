@@ -1,11 +1,13 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Flash : MeshInstance3D
 {
     float t = 0;
     StandardMaterial3D m;
-    int flashCount = 0;
+    HashSet<Player> interactablePlayers = new HashSet<Player>();
 
     public override void _Ready()
     {
@@ -21,23 +23,22 @@ public partial class Flash : MeshInstance3D
     {
         if(IsFlashing())
         {
-            t += (float)delta * 10;
-            float energy = Mathf.Sin(t) * 0.5f + 0.5f;
-            GD.Print(t);
-            GD.Print(energy);
-            m.EmissionEnergyMultiplier = energy *.5f;
+            //t += (float)delta * 10;
+            //float energy = Mathf.Sin(t) * 0.5f + 0.5f;
+            //m.EmissionEnergyMultiplier = energy *.5f;
+            m.EmissionEnergyMultiplier = .4f;
         }
     }
 
-    public void StackFlash()
+    public void StackFlash(Player player)
     {
-        flashCount++;
+        interactablePlayers.Add(player);
     }
 
-    public void UnstackFlash()
+    public void UnstackFlash(Player player)
     {
-        flashCount--;
-        if(flashCount == 0)
+        interactablePlayers.Remove(player);
+        if(interactablePlayers.Count == 0)
         {
             t = 0;
             m.EmissionEnergyMultiplier = 0;
@@ -46,6 +47,25 @@ public partial class Flash : MeshInstance3D
 
     public bool IsFlashing()
     {
-        return flashCount > 0;
+        return interactablePlayers.Count > 0;
+    }
+
+    public static void SetFlashOnThisAndChildren(Node3D node, bool value, Player player)
+    {
+        if(node is Flash flash)
+        {
+            if(value)
+            {
+                flash.StackFlash(player);
+            }
+            else
+            {
+                flash.UnstackFlash(player);
+            }
+        }                    
+        foreach (Node3D child in node.GetChildren().Where(x => x is Node3D))
+        {
+            SetFlashOnThisAndChildren(child, value, player);
+        }
     }
 }

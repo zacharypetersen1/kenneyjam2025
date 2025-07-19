@@ -18,7 +18,6 @@ public partial class Interactable : RigidBody3D
 
     public void Remove()
     {
-        Compartment.RemoveChild(this);
         Compartment.Inserted = null;
         DischargeRate = 0;
         GD.Print(Charge);
