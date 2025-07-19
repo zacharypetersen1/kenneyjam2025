@@ -3,5 +3,10 @@ using System;
 
 public partial class Compartment : StaticBody3D
 {
-    public bool isFilled = false;
+    public Interactable Inserted = null;
+
+    [Export]
+    public int PowerDraw = 1;
+
+    public bool Drain() => Inserted is not null && Inserted.Charge > 0;
 }

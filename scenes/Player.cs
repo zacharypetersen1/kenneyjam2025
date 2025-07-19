@@ -28,8 +28,8 @@ public partial class Player : CharacterBody3D
                     }
                     interactable.Freeze = true;
                     interactable.Rotation = new();
-                    interactable.Position = holdLocation.Position;
                     holdLocation.AddChild(interactable);
+                    interactable.GlobalPosition = ToGlobal(holdLocation.Position);
                 }
             }
             else
@@ -55,7 +55,7 @@ public partial class Player : CharacterBody3D
                     }
                     else
                     {
-                        heldObject.GlobalPosition = holdLocation.ToGlobal(holdLocation.Position);
+                        heldObject.GlobalPosition = ToGlobal(GetNode<Area3D>("Area3D").GetChild<Node3D>(0).Position);
                     }
                 }
             }

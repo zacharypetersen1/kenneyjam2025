@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwf7qidlnwa4k" path="res://scenes/Player.tscn" id="6_gnj84"]
 [ext_resource type="PackedScene" uid="uid://x1ly2gdhw5f1" path="res://scenes/Interactable.tscn" id="7_13hj0"]
 [ext_resource type="PackedScene" uid="uid://nes42k5wbx7o" path="res://scenes/Compartment.tscn" id="7_imhth"]
-[ext_resource type="PackedScene" uid="uid://cg5f3l8qpixkp" path="res://scenes/Window.tscn" id="8_imhth"]
+[ext_resource type="PackedScene" path="res://scenes/Window.tscn" id="8_imhth"]
 
 [sub_resource type="Environment" id="Environment_gnj84"]
 
@@ -24,6 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 0.475701, 0.879607, 0, -0.879607, 0.475701, 
 
 [node name="Player" parent="." instance=ExtResource("6_gnj84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 3)
+Speed = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gnj84")
