@@ -6,8 +6,6 @@ public partial class Turret : Node3D
     int rocketsFired = 0;
     [Export]
     public float fireRate = 1;
-    [Export]
-    public ThreatDir aimDir;
     float t = 0;
     public bool isPowered = false;
     [Export]
@@ -16,7 +14,6 @@ public partial class Turret : Node3D
     public MeshInstance3D light1;
     [Export]
     public MeshInstance3D light2;
-    [Export]
     public Node3D[] muzzles = new Node3D[2];
     [Export]
     public PackedScene rocketBlueprint; 
@@ -26,6 +23,8 @@ public partial class Turret : Node3D
 
     override public void _Ready()
     {
+        muzzles[0] = GetNode<Node3D>("Muzzle1");
+        muzzles[1] = GetNode<Node3D>("Muzzle2");
         StandardMaterial3D material = light1.GetSurfaceOverrideMaterial(0) as StandardMaterial3D;
         mat = material.Duplicate() as StandardMaterial3D;
         light1.MaterialOverride = mat;
@@ -50,7 +49,7 @@ public partial class Turret : Node3D
         if(isPowered)
         {
             cooldown = Mathf.Max(0, cooldown - (float)delta);
-            EnemyShip target = GameManager.inst.GetLowestHPShipInDir(aimDir);
+            EnemyShip target = GameManager.inst.GetLowestHPShip();
             if(target is not null)
             {
                 LookAt(target.GlobalPosition, new Vector3(0, 1, 0));

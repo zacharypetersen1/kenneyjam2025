@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-public enum ThreatDir
-{
-    North = 0, East = 1, South = 2, West = 3
-}
-
 public partial class GameManager : Node
 {
     public static GameManager inst;
@@ -15,18 +10,11 @@ public partial class GameManager : Node
     [Export]
     public PackedScene enemyShipBlueprint;
     [Export]
-    public Node3D[] northEnemySpots = new Node3D[3];
-    [Export]
-    public Node3D[] eastEnemySpots = new Node3D[3];
-    [Export]
-    public Node3D[] southEnemySpots = new Node3D[3];
-    [Export]
-    public Node3D[] westEnemySpots = new Node3D[3];
+    public Node3D[] enemyWaypoints = new Node3D[5];
+    public EnemyShip[] enemyShips = new EnemyShip[5];
+
     [Export]
     public Node3D[] PlayerSpawnPoints = [];
-
-    Dictionary<ThreatDir, Node3D[]> enemySpots = new Dictionary<ThreatDir, Node3D[]>();
-    Dictionary<ThreatDir, EnemyShip[]> enemyShips = new Dictionary<ThreatDir, EnemyShip[]>();
 
     public double MaxHealth = 100;
     public double Health;
@@ -35,29 +23,18 @@ public partial class GameManager : Node
     public float CurTravelDist = 0;
     public float CurTravelSpeed = 0;
 
+    [Export]
+    float MinSpawnTime = 6;
+    [Export]
+    float MaxSpawnTime = 17;
+    bool spawning = false;
+    float spawnTime = 0;
+
     public void Initialize()
     {
         inst = this;
         Health = MaxHealth;
         SpawnPlayers();
-        enemySpots.Add(ThreatDir.North, northEnemySpots);
-        enemySpots.Add(ThreatDir.East, eastEnemySpots);
-        enemySpots.Add(ThreatDir.South, southEnemySpots);
-        enemySpots.Add(ThreatDir.West, westEnemySpots);
-
-        for (int i = 0; i < 4; i++)
-        {
-            enemyShips.Add((ThreatDir)i, new EnemyShip[3]);
-        }
-
-        for (int i = 0; i < 4; i++)
-        {
-            if(i == 2) continue;
-            for (int j = 0; j < 3; j++)
-            {
-                SpawnEnemyShip((ThreatDir)i);
-            }
-        }
     }
 
     public void SpawnPlayers()
@@ -72,6 +49,21 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
+        if(CurTravelSpeed > 0)
+        {
+            spawning = true;
+        }
+
+        if(spawning)
+        {
+            spawnTime -= (float)delta;
+            if(spawnTime < 0)
+            {
+                SpawnEnemyShip();
+                spawnTime += Random.Shared.Next((int)MinSpawnTime, (int)MaxSpawnTime);
+            }
+        }
+
         if (Health > 0)
         {
             CurTravelDist += CurTravelSpeed * (float)delta;
@@ -88,11 +80,11 @@ public partial class GameManager : Node
         }
     }
 
-    public bool IsSpotAvailable(ThreatDir dir)
+    public bool IsSpotAvailable()
     {
-        for (int i = 0; i < enemyShips[dir].Count(); i++)
+        for (int i = 0; i < enemyShips.Length; i++)
         {
-            if (enemyShips[dir][i] is null)
+            if (enemyShips[i] is null)
             {
                 return true;
             }
@@ -100,48 +92,47 @@ public partial class GameManager : Node
         return false;
     }
 
-    public void SpawnEnemyShip(ThreatDir dir)
+    public void SpawnEnemyShip()
     {
-        if (!IsSpotAvailable(dir))
+        if (!IsSpotAvailable())
             return;
 
-        int chosenSpot = -1;
-        for (int i = 0; i < enemyShips[dir].Count(); i++)
+        int chosenIndex = -1;
+        for (int i = 0; i < enemyShips.Length; i++)
         {
-            if (enemyShips[dir][i] is null)
+            if (enemyShips[i] is null)
             {
-                chosenSpot = i;
+                chosenIndex = i;
                 break;
             }
         }
-        Node3D chosenNode = enemySpots[dir][chosenSpot];
+        Node3D chosenNode = enemyWaypoints[chosenIndex];
         EnemyShip enemyShip = enemyShipBlueprint.Instantiate() as EnemyShip;
-        enemyShip.dir = dir;
-        enemyShip.spot = chosenSpot;
-        enemyShips[dir][chosenSpot] = enemyShip;
+        enemyShip.index = chosenIndex;
+        enemyShips[chosenIndex] = enemyShip;
         chosenNode.AddChild(enemyShip);
         enemyShip.Position = new Vector3(0, 0, -200);
         enemyShip.Rotation = new();
     }
 
-    public EnemyShip GetLowestHPShipInDir(ThreatDir dir)
+    public EnemyShip GetLowestHPShip()
     {
         EnemyShip res = null;
         float lowestHp = float.MaxValue;
-        for(int i = 0; i < enemyShips[dir].Count(); i++)
+        for(int i = 0; i < enemyShips.Length; i++)
         {
-            if(enemyShips[dir][i] != null && enemyShips[dir][i].hp < lowestHp)
+            if(enemyShips[i] != null && enemyShips[i].hp < lowestHp)
             {
-                res = enemyShips[dir][i];
-                lowestHp = enemyShips[dir][i].hp;
+                res = enemyShips[i];
+                lowestHp = enemyShips[i].hp;
             }
         }
         return res;
     }
 
-    public void ClearEnemyShipSpot(ThreatDir dir, int spot)
+    public void ClearEnemyShipIndex(int index)
     {
-        enemyShips[dir][spot] = null;
+        enemyShips[index] = null;
     }
 
     public void TakeDamage(float dmg)
