@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj8m7yiisp82o"]
+
+[ext_resource type="Texture2D" uid="uid://dotlp8r3jhl5c" path="res://Textures/bar_square_large.png" id="1_7y866"]
+[ext_resource type="Script" uid="uid://do2ur21oimnsk" path="res://scenes/UIProgressBar.cs" id="1_v8kn1"]
+[ext_resource type="Texture2D" uid="uid://bf4ef20iweyem" path="res://Textures/bar_square_gloss_large.png" id="2_v8kn1"]
+
+[node name="UiProgressBar" type="Node3D" node_paths=PackedStringArray("scaler", "barFG")]
+script = ExtResource("1_v8kn1")
+color = Color(1, 1, 1, 1)
+scaler = NodePath("FlipLOL/Scaler")
+barFG = NodePath("FlipLOL/Scaler/FG")
+
+[node name="FlipLOL" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BG" type="Sprite3D" parent="FlipLOL"]
+modulate = Color(0.332881, 0.332881, 0.332881, 1)
+render_priority = 1
+texture = ExtResource("1_7y866")
+
+[node name="BG2" type="Sprite3D" parent="FlipLOL"]
+transform = Transform3D(1.11412, 0, 1.42109e-14, 0, 1.34948, 0, -1.42109e-14, 0, 1.03767, 0, 0, 0)
+modulate = Color(0, 0, 0, 0.584314)
+texture = ExtResource("1_7y866")
+
+[node name="Scaler" type="Node3D" parent="FlipLOL"]
+transform = Transform3D(1, 0, 0, 0, 0.999, 0, 0, 0, 0.999, -0.48, 0, 0)
+
+[node name="FG" type="Sprite3D" parent="FlipLOL/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 0, 0)
+render_priority = 2
+texture = ExtResource("2_v8kn1")

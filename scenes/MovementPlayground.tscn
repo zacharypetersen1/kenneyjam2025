@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv7ugmxp2wh7o"]
+[gd_scene load_steps=13 format=3 uid="uid://dv7ugmxp2wh7o"]
 
 [ext_resource type="PackedScene" uid="uid://5nokwqpiltnp" path="res://Models/SpaceStationKit/floor.glb" id="1_ae7en"]
 [ext_resource type="PackedScene" uid="uid://bweblfif2bjc0" path="res://Models/SpaceStationKit/wall.glb" id="2_vcr3f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nes42k5wbx7o" path="res://scenes/Compartment.tscn" id="7_imhth"]
 [ext_resource type="PackedScene" uid="uid://bl0ncr5u7yl7r" path="res://scenes/EnemyShip.tscn" id="8_heu5x"]
 [ext_resource type="PackedScene" uid="uid://cg5f3l8qpixkp" path="res://scenes/Window.tscn" id="8_imhth"]
+[ext_resource type="PackedScene" uid="uid://c3b3xwebu4ak0" path="res://scenes/HealthBar.tscn" id="11_4ctss"]
 [ext_resource type="PackedScene" uid="uid://cugp5stpbtduw" path="res://scenes/Turret.tscn" id="11_h3kco"]
 [ext_resource type="PackedScene" uid="uid://dvs7a1gmmncgh" path="res://Models/SpaceStationKit/pipe.glb" id="11_nhrsb"]
 [ext_resource type="PackedScene" uid="uid://jn24w661i5ex" path="res://Models/SpaceStationKit/pipe-bend.glb" id="12_4ctss"]
@@ -234,5 +235,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1,
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
 aimDir = 1
 compartment = NodePath("../../Compartment")
+
+[node name="HealthBar" parent="." instance=ExtResource("11_4ctss")]
+offset_left = 92.0
+offset_top = 35.0
+offset_right = 284.0
+offset_bottom = 67.0
+scale = Vector2(1, 1)
 
 [connection signal="ready" from="." to="GameManager" method="Initialize"]

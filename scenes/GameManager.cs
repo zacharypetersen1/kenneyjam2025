@@ -32,11 +32,13 @@ public partial class GameManager : Node
 
     public List<Compartment> ActiveCompartments = [];
 
-    public double Health = 100;
+    public double MaxHealth = 100;
+    public double Health;
 
     public void Initialize()
     {
         inst = this;
+        Health = MaxHealth;
         SpawnPlayers();
         InactivateCompartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
         enemySpots.Add(ThreatDir.North, northEnemySpots);
