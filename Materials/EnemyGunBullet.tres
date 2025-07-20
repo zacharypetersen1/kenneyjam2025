@@ -1,4 +1,4 @@
-[gd_resource type="ParticleProcessMaterial" load_steps=0 format=3 uid="uid://xehv2eie3xb6"]
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://xehv2eie3xb6"]
 
 [resource]
 direction = Vector3(0, 0, 1)

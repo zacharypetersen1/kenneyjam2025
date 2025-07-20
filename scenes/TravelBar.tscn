@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://223vdaqthl7f" path="res://scenes/TravelBar.cs" id="3_yrwwy"]
 [ext_resource type="Texture2D" uid="uid://dpf0fmoavpdac" path="res://Textures/warning.png" id="4_82ats"]
 
-[node name="TravelBar" type="TextureProgressBar"]
+[node name="TravelBar" type="TextureProgressBar" node_paths=PackedStringArray("noThrusterText")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -20,6 +20,7 @@ step = 0.0
 value = 0.615
 texture_progress = ExtResource("2_3m2yb")
 script = ExtResource("3_yrwwy")
+noThrusterText = NodePath("Control")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
