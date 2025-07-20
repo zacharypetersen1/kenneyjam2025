@@ -3,10 +3,21 @@
 [sub_resource type="LabelSettings" id="LabelSettings_kmepn"]
 font_size = 32
 
-[node name="PlayerStatus" type="CenterContainer"]
+[node name="PlayerStatus" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="PlayerStatus" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PlayerStatus"]
 layout_mode = 2
 text = "Press A to Join"
 label_settings = SubResource("LabelSettings_kmepn")

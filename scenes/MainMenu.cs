@@ -18,7 +18,8 @@ public partial class MainMenu : Control
             {
                 if (!Players.PlayerIds.Contains(@event.Device))
                 {
-                    GetNode("VBoxContainer/PlayerStatuses").GetChild(Players.PlayerIds.Count).GetNode<Label>("Label").Text = $"Player {Players.PlayerIds.Count + 1} Joined";
+                    GetNode("VBoxContainer/PlayerStatuses").GetChild(Players.PlayerIds.Count).GetNode<Label>("PlayerStatus/Label").Text = $"Player {Players.PlayerIds.Count + 1} Joined";
+                    GetNode("VBoxContainer/PlayerStatuses").GetChild<PanelContainer>(Players.PlayerIds.Count).AddThemeStyleboxOverride("panel", new StyleBoxFlat() { BgColor = new(Players.Colors[Players.PlayerIds.Count], 0.15f) });
                     Players.PlayerIds.Add(@event.Device);
                     GetNode<Label>("VBoxContainer/CenterContainer/Label").Text = "Press Start";
                 }
