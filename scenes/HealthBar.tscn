@@ -9,11 +9,10 @@
 
 [node name="HealthBar" type="TextureProgressBar"]
 texture_repeat = 1
-offset_left = 176.0
-offset_top = 61.0
-offset_right = 368.0
-offset_bottom = 93.0
-scale = Vector2(2, 2)
+offset_left = 103.0
+offset_top = 46.0
+offset_right = 295.0
+offset_bottom = 78.0
 theme = SubResource("Theme_p3jmp")
 max_value = 1.0
 step = 0.0
