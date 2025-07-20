@@ -1,0 +1,21 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://bf5x6b356pdig"]
+
+[sub_resource type="Curve" id="Curve_ihh2x"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 2.41434, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8sfuc"]
+curve = SubResource("Curve_ihh2x")
+
+[resource]
+direction = Vector3(0, 0, 1)
+spread = 10.0
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+damping_min = 15.0
+damping_max = 22.0
+scale_min = 0.4
+scale_max = 0.8
+scale_over_velocity_curve = SubResource("CurveTexture_8sfuc")

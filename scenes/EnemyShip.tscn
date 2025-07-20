@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://bl0ncr5u7yl7r"]
+[gd_scene load_steps=11 format=4 uid="uid://bl0ncr5u7yl7r"]
 
 [ext_resource type="Script" uid="uid://driafxxw5vm88" path="res://scenes/EnemyShip.cs" id="1_2dxw2"]
 [ext_resource type="PackedScene" uid="uid://de4nreju8j33h" path="res://Models/SpaceKit/craft_speederC.glb" id="1_suvnd"]
-[ext_resource type="Material" uid="uid://d3hqn16xdfn1b" path="res://Materials/ExplosionTrails.tres" id="3_ynisa"]
+[ext_resource type="Material" uid="uid://xehv2eie3xb6" path="res://Materials/EnemyGunBullet.tres" id="4_8qymr"]
+[ext_resource type="Material" uid="uid://bf5x6b356pdig" path="res://Materials/EnemyGunSpray.tres" id="4_c06ap"]
+[ext_resource type="Material" uid="uid://b4os4buhx8bsr" path="res://Materials/SmokeColorWhite.tres" id="4_jtb6m"]
 [ext_resource type="PackedScene" uid="uid://bj8m7yiisp82o" path="res://scenes/UIProgressBar.tscn" id="4_va8q6"]
+[ext_resource type="Material" uid="uid://dskqmwg8vtqmm" path="res://Materials/ExplosionColor.tres" id="5_c06ap"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7fyd"]
 resource_name = "rockTrack.001"
@@ -11,7 +14,7 @@ albedo_color = Color(0.99166, 0.786362, 0.70065, 1)
 metallic = 1.0
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2bl4t"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_x72rb"]
 _surfaces = [{
 "aabb": AABB(-0.433013, 0, -0.375, 0.866025, 0.735, 0.75),
 "format": 34896613377,
@@ -41,24 +44,59 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/z+HRgAA//+jUDQWRyH//1uvNBZHIf//W680Fkch////v4dGAAD///8/h0YAAP//W680Fkchl9ytlwAAo1CX3FuvAAD/f5fcW68AAP9/l9y33jQW/3+X3FuvNBZHIZfc//+HRv9/qqr/v4dG//+qqv+/d7n//6qq/793uf//qqr//3e5/3+qqv//h0b/f6qqW680Frfe1bD/v4dG///VsP//h0b/f9Ww//+HRv9/1bC33jQW/3/VsFuvNBa33tWwUWj//1uv/7+jUP///3//v1Fo//+jUP+/rZf//1uv/7+tl///o1D/v1uv////f/+/UWgAAFuvc66jUDQWt95zrluvNBa33nOuW680Frfec66tlwAAW69zrlFoAABbr3Ouo1AAAP9/bL1HITQW/39svaNQNBa33my9o1A0FrfebL1RaAAAW69svaNQAAD/f2y9AACHRv9/1bD/P4dG///VsKNQNBa33tWwo1A0Frfe1bBHITQW/3/VsAAAh0b/f9Ww/793uf//AID/v4dG//8AgP8/h0b//wCA/z93uf//AIBbrzQWRyH//6NQNBZHIf//UWgAAKNQ//9RaAAAo1D//62XAACjUP//W680Fkch////v4dGAABU1f//h0b/f1TV//93uf9/VNX//3e5/39U1f+/d7kAAFTV/7+HRgAAVNWjUDQWRyGX3EchNBb/f5fco1AAAP9/l9yjUAAA/3+X3FFoAACjUJfco1A0Fkchl9z/P4dGAACA1wAAh0b/f4DXRyE0Fv9/gNdHITQW/3+A16NQNBZHIYDX/z+HRgAAgNdbrzQWRyGA17feNBb/f4DX//+HRv9/gNf//4dG/3+A1/+/h0YAAIDXW680FkchgNcAAHe5/3+qqv8/d7n//6qq/z+HRv//qqr/P4dG//+pqgAAh0b/f6mqAAB3uf9/qapbrwAA/39sva2XAABbr2y9W680FrfebL1brzQWt95svbfeNBb/f2y9W68AAP9/bL3/v4dG///0mFuvNBa33vSYo1A0Frfe9JijUDQWt970mP8/h0b///SY/7+HRv//9Jj/P3e5AABU1QAAd7n/f1TVAACHRv9/VNUAAIdG/39U1f8/h0YAAFTV/z93uQAAVNVRaAAAo1D//6NQAAD/f///UWgAAFuv//+tlwAAo1D//62XAABbr///W68AAP9/////P3e5AAD///8/h0YAAP///7+HRgAA////v3e5AAD///+/d7kAAIDX//93uf9/gNe33srp/3+A17feyun/f4DXW6/K6UchgNf/v3e5AACA11uv////f5fcrZf//6NQl9xbr8rpRyGX3FuvyulHIZfct97K6f9/l9xbr////3+X3Fuvyum33my9rZf//1uvbL1br////39svVuv////f2y9t97K6f9/bL1br8rpt95svf//d7n/f9Ww/793uf//1bBbr8rpt97VsFuvyum33tWwt97K6f9/1bD//3e5/3/VsKNQyulHIYDXRyHK6f9/gNcAAHe5/3+A1wAAd7n/f4DX/z93uQAAgNejUMrpRyGA16NQ////f5fcRyHK6f9/l9yjUMrpRyGX3KNQyulHIZfcUWj//6NQl9yjUP///3+X3Fuvyum33vSY/793uf//9Jj/P3e5///0mP8/d7n///SYo1DK6bfe9Jhbr8rpt970mFuvyum33nOuo1DK6bfec65RaP//W69zrlFo//9br3OurZf//1uvc65br8rpt95zrqNQyum33my9RyHK6f9/bL2jUP///39svaNQ////f2y9UWj//1uvbL2jUMrpt95svaNQyum33tWw/z93uf//1bAAAHe5/3/VsAAAd7n/f9WwRyHK6f9/1bCjUMrpt97VsKNQyulHIf///z93uQAA////v3e5AAD///+/d7kAAP//W6/K6Uch//+jUMrpRyH//1Fo//+jUP//o1DK6Uch//9br8rpRyH//1uvyulHIf//rZf//6NQ//9RaP//o1D//7+e//+/nv//v57//7+e//+/nv//v57//3FoWkBxaFpAcWhaQHFoWkBxaFpAcWhaQP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAGJaUztiWlM7YlpTO2JaUztiWlM7YlpTO////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f4UuV8yFLlfMhS5XzIUuV8yFLlfMhS5XzKtEYtqrRGLaq0Ri2qtEYtqrRGLaq0Ri2v9/////f////3////9/////sf///7H///+x////sf///7H///+x////fwAA/38AAP9/AAD/fwAA/38AAP9/AACkP3DopD9w6KQ/cOikP3DopD9w6KQ/cOhmVWfwZlVn8GZVZ/BmVWfwZlVn8GZVZ/BocJgqaHCYKmhwmCpocJgqaHCYKmhwmCr/f////3////9/////f////3////9///9YTHlRWEx5UVhMeVFYTHlRWEx5UVhMeVEAAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f////3////9/////f////3////9/////f/8//3//P/9//z//f/8//3//P/9//z//f////3////9/////f///mKqXD5iqlw+YqpcPmKqXD5iqlw+YqpcPWsCOF1rAjhdawI4XWsCOF1rAjhdawI4XedGnM3nRpzN50aczedGnM3nRpzN50aczU7ucJVO7nCVTu5wlU7ucJVO7nCVTu5wllo9m1ZaPZtWWj2bVlo9m1ZaPZtWWj2bVjZekv42XpL+Nl6S/jZekv42XpL+Nl6S/////f////3////9/////f////3////9/////f////3////9/////f////3////9/prOFrqazha6ms4WuprOFrqazha6ms4WunKWrxJylq8ScpavEnKWrxJylq8ScpavE/38+4f9/PuH/fz7h/38+4f9/PuH/fz7h/3//zf9//83/f//N/3//zf9//83/f//N")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_2bl4t")
+shadow_mesh = SubResource("ArrayMesh_x72rb")
 
-[node name="EnemyShip" type="Node3D" node_paths=PackedStringArray("attackProgressBar")]
+[node name="EnemyShip" type="Node3D" node_paths=PackedStringArray("attackProgressBar", "playOnAttack")]
 script = ExtResource("1_2dxw2")
 attackProgressBar = NodePath("UiProgressBar")
+playOnAttack = [NodePath("Spray"), NodePath("Bullet"), NodePath("Spray2"), NodePath("Bullet2")]
 
 [node name="craft_speederC2" parent="." instance=ExtResource("1_suvnd")]
 transform = Transform3D(-2, 0, 3.01992e-07, 0, 2, 0, -3.01992e-07, 0, -2, 0, 0, 0)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0467, 0)
-emitting = false
-amount = 24
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-process_material = ExtResource("3_ynisa")
-draw_pass_1 = SubResource("ArrayMesh_afh0o")
-
 [node name="UiProgressBar" parent="." instance=ExtResource("4_va8q6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43697, 0)
+
+[node name="Spray" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.785381, 0.214464, 0)
+material_override = ExtResource("4_jtb6m")
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = ExtResource("4_c06ap")
+draw_pass_1 = SubResource("ArrayMesh_afh0o")
+
+[node name="Bullet" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, -0.207912, 0, 0.207912, 0.978148, -0.785381, 0.214464, 0)
+material_override = ExtResource("5_c06ap")
+emitting = false
+amount = 1
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = ExtResource("4_8qymr")
+draw_pass_1 = SubResource("ArrayMesh_afh0o")
+
+[node name="Spray2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791812, 0.214464, 0)
+material_override = ExtResource("4_jtb6m")
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = ExtResource("4_c06ap")
+draw_pass_1 = SubResource("ArrayMesh_afh0o")
+
+[node name="Bullet2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, -0.207912, 0, 0.207912, 0.978148, 0.791812, 0.214464, 0)
+material_override = ExtResource("5_c06ap")
+emitting = false
+amount = 1
+one_shot = true
+explosiveness = 0.9
+local_coords = true
+process_material = ExtResource("4_8qymr")
+draw_pass_1 = SubResource("ArrayMesh_afh0o")

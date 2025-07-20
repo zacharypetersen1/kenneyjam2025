@@ -11,6 +11,8 @@ public partial class EnemyShip : Node3D
     public float hp = 5;
     [Export]
     public UIProgressBar attackProgressBar;
+    [Export]
+    public GpuParticles3D[] playOnAttack = new GpuParticles3D[2];
     public ThreatDir dir;
     public int spot = -1;
     float lerpSpeed = .1f;
@@ -35,6 +37,10 @@ public partial class EnemyShip : Node3D
         curAttackProgress += (float)delta;
         if(curAttackProgress > attackSpeed)
         {
+            for(int i = 0; i < playOnAttack.Length; i++)
+            {
+                playOnAttack[i].Emitting = true;
+            }
             GameManager.inst.TakeDamage(attackDmg);
             curAttackProgress -= attackSpeed;
         }
