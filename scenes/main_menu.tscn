@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvv4mlp8edlfp" path="res://scenes/MainMenu.cs" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://ca8jkfw2o1ara" path="res://scenes/Game.tscn" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://c2p31so200vdt" path="res://Models/SpaceStationKit/container-tall.glb" id="3_bqqt6"]
-[ext_resource type="PackedScene" path="res://player_status.tscn" id="3_wu84c"]
+[ext_resource type="PackedScene" uid="uid://ccyvm6sp1kyfe" path="res://player_status.tscn" id="3_wu84c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
 font_size = 96

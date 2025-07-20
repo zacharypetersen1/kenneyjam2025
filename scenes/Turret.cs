@@ -14,7 +14,6 @@ public partial class Turret : Node3D
     public MeshInstance3D light1;
     [Export]
     public MeshInstance3D light2;
-    [Export]
     public Node3D[] muzzles = new Node3D[2];
     [Export]
     public PackedScene rocketBlueprint; 
@@ -24,6 +23,8 @@ public partial class Turret : Node3D
 
     override public void _Ready()
     {
+        muzzles[0] = GetNode<Node3D>("Muzzle1");
+        muzzles[1] = GetNode<Node3D>("Muzzle2");
         StandardMaterial3D material = light1.GetSurfaceOverrideMaterial(0) as StandardMaterial3D;
         mat = material.Duplicate() as StandardMaterial3D;
         light1.MaterialOverride = mat;

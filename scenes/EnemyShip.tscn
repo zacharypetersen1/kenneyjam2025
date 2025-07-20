@@ -48,6 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_x72rb")
 
 [node name="EnemyShip" type="Node3D" node_paths=PackedStringArray("attackProgressBar", "playOnAttack")]
 script = ExtResource("1_2dxw2")
+attackSpeed = 16.0
 attackProgressBar = NodePath("UiProgressBar")
 playOnAttack = [NodePath("Spray"), NodePath("Bullet"), NodePath("Spray2"), NodePath("Bullet2")]
 

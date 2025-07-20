@@ -40,11 +40,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ejj2w")
 
-[node name="Turret" type="Node3D" node_paths=PackedStringArray("light1", "light2", "muzzles")]
+[node name="Turret" type="Node3D" node_paths=PackedStringArray("light1", "light2")]
 script = ExtResource("1_tbwx1")
 light1 = NodePath("Light1")
 light2 = NodePath("Light2")
-muzzles = [NodePath("Muzzle1"), NodePath("Muzzle2")]
 rocketBlueprint = ExtResource("2_1l7md")
 
 [node name="turret_double2" parent="." instance=ExtResource("1_76wwe")]

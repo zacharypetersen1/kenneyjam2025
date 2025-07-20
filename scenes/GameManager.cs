@@ -23,16 +23,18 @@ public partial class GameManager : Node
     public float CurTravelDist = 0;
     public float CurTravelSpeed = 0;
 
+    [Export]
+    float MinSpawnTime = 6;
+    [Export]
+    float MaxSpawnTime = 17;
+    bool spawning = false;
+    float spawnTime = 0;
+
     public void Initialize()
     {
         inst = this;
         Health = MaxHealth;
         SpawnPlayers();
-
-        for (int i = 0; i < 5; i++)
-        {
-            SpawnEnemyShip();
-        }
     }
 
     public void SpawnPlayers()
@@ -47,6 +49,21 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
+        if(CurTravelSpeed > 0)
+        {
+            spawning = true;
+        }
+
+        if(spawning)
+        {
+            spawnTime -= (float)delta;
+            if(spawnTime < 0)
+            {
+                SpawnEnemyShip();
+                spawnTime += Random.Shared.Next((int)MinSpawnTime, (int)MaxSpawnTime);
+            }
+        }
+
         if (Health > 0)
         {
             CurTravelDist += CurTravelSpeed * (float)delta;
