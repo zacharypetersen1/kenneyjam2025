@@ -69,14 +69,16 @@ public partial class GameManager : Node
             CurTravelDist += CurTravelSpeed * (float)delta;
             if (CurTravelDist >= MaxTravelDist)
             {
-                GD.Print("You win!");
+                Players.Win = true;
                 SetProcess(false);
+                GetTree().ChangeSceneToFile("res://scenes/end_screen.tscn");
             }
         }
         else
         {
-            GD.Print("Game Over!");
+            Players.Win = false;
             SetProcess(false);
+            GetTree().ChangeSceneToFile("res://scenes/end_screen.tscn");
         }
     }
 

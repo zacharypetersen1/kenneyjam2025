@@ -89,7 +89,7 @@ metadata/_editor_source_scene = "res://floor_panel_2.tscn"
 environment = SubResource("Environment_8cj0n")
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("enemyWaypoints", "PlayerSpawnPoints") instance=ExtResource("2_yqjtg")]
-enemyWaypoints = [NodePath("../EnemyWaypoints/Waypoint1"), NodePath("../EnemyWaypoints/Waypoint2"), NodePath("../EnemyWaypoints/Waypoint3"), NodePath("../EnemyWaypoints/Waypoint4"), NodePath("../EnemyWaypoints/Waypoint5"), null, null]
+enemyWaypoints = [NodePath("../EnemyWaypoints/Waypoint1"), NodePath("../EnemyWaypoints/Waypoint2"), NodePath("../EnemyWaypoints/Waypoint3"), NodePath("../EnemyWaypoints/Waypoint4"), NodePath("../EnemyWaypoints/Waypoint5")]
 PlayerSpawnPoints = [NodePath("PlayerSpawn1"), NodePath("PlayerSpawn2"), NodePath("PlayerSpawn3"), NodePath("PlayerSpawn4")]
 
 [node name="PlayerSpawn1" type="Marker3D" parent="GameManager"]

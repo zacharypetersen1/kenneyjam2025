@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqo1khxi6l5sh"]
+
+[ext_resource type="Script" uid="uid://xjv25nlb2kud" path="res://scenes/EndScreen.cs" id="1_kq7ac"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6e1uj"]
+font_size = 64
+
+[node name="End Screen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kq7ac")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_6e1uj")

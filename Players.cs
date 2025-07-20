@@ -3,6 +3,7 @@ using Godot;
 
 public static class Players
 {
+    public static bool Win = false;
     public static List<int> PlayerIds = [];
 
     public static readonly Color[] Colors = [PlayerColors.Red, PlayerColors.Green, PlayerColors.Blue, PlayerColors.Yellow];
