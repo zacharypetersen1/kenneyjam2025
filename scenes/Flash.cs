@@ -5,28 +5,21 @@ using System.Linq;
 
 public partial class Flash : MeshInstance3D
 {
-    float t = 0;
-    StandardMaterial3D m;
-    HashSet<Player> interactablePlayers = new HashSet<Player>();
-
-    public override void _Ready()
+    StandardMaterial3D FlashMaterial = new()
     {
-        StandardMaterial3D material = GetSurfaceOverrideMaterial(0) as StandardMaterial3D;
-        m = material.Duplicate() as StandardMaterial3D;
-        m.EmissionEnabled = true;
-        m.Emission = new Color(1,1,1,1);
-        m.EmissionEnergyMultiplier = 0;
-        MaterialOverride = m;
-    }
+        Transparency = BaseMaterial3D.TransparencyEnum.Alpha,
+        AlbedoColor = new(0, 0, 0, 0.5f),
+        EmissionEnabled = true,
+        Emission = new(0, 1, 1, 1),
+    };
+
+    HashSet<Player> interactablePlayers = new HashSet<Player>();
 
     public override void _Process(double delta)
     {
         if(IsFlashing())
         {
-            //t += (float)delta * 10;
-            //float energy = Mathf.Sin(t) * 0.5f + 0.5f;
-            //m.EmissionEnergyMultiplier = energy *.5f;
-            m.EmissionEnergyMultiplier = .4f;
+            MaterialOverlay = FlashMaterial;
         }
     }
 
@@ -38,10 +31,9 @@ public partial class Flash : MeshInstance3D
     public void UnstackFlash(Player player)
     {
         interactablePlayers.Remove(player);
-        if(interactablePlayers.Count == 0)
+        if (interactablePlayers.Count == 0)
         {
-            t = 0;
-            m.EmissionEnergyMultiplier = 0;
+            MaterialOverlay = null;
         }
     }
 
