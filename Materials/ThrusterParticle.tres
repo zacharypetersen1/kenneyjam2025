@@ -1,0 +1,20 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cucfu8bhejthk"]
+
+[sub_resource type="Curve" id="Curve_l6qus"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.24148, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xinso"]
+curve = SubResource("Curve_l6qus")
+
+[resource]
+resource_local_to_scene = true
+emission_shape_scale = Vector3(2, 1, 1)
+direction = Vector3(-1, 0.25, 0)
+spread = 25.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_xinso")

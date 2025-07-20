@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2437ola88cty"]
+[gd_scene load_steps=5 format=3 uid="uid://c6rggnllvb0mr"]
 
 [ext_resource type="PackedScene" uid="uid://cmrwnmw0xjb1n" path="res://Models/SpaceKit/rocket_baseA.glb" id="1_e5hhc"]
 [ext_resource type="PackedScene" uid="uid://csduuqook2f07" path="res://Models/SpaceKit/rocket_baseB.glb" id="2_gfv5b"]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cg5f3l8qpixkp" path="res://scenes/Window.tscn" id="5_aug50"]
 [ext_resource type="PackedScene" uid="uid://vk3qagppakgu" path="res://Models/SpaceStationKit/wall-corner.glb" id="6_kiw3p"]
 [ext_resource type="PackedScene" uid="uid://bweblfif2bjc0" path="res://Models/SpaceStationKit/wall.glb" id="7_kiw3p"]
-[ext_resource type="PackedScene" path="res://scenes/Thrusters.tscn" id="8_400sg"]
+[ext_resource type="PackedScene" uid="uid://dsrc1meq6rtq2" path="res://scenes/Thruster.tscn" id="8_mcffj"]
 [ext_resource type="PackedScene" uid="uid://nes42k5wbx7o" path="res://scenes/Compartment.tscn" id="9_g4kob"]
 [ext_resource type="PackedScene" uid="uid://x1ly2gdhw5f1" path="res://scenes/Battery.tscn" id="10_qy1jj"]
 [ext_resource type="PackedScene" uid="uid://c3b3xwebu4ak0" path="res://scenes/HealthBar.tscn" id="11_3xj3m"]
@@ -445,9 +445,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
 [node name="wall73" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2)
 
-[node name="wall74" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
-
 [node name="wall59" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
 
@@ -521,7 +518,7 @@ transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 0, 3)
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 3)
 
 [node name="wall75" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -8.7, 0, 2)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 0, 2)
 
 [node name="wall56" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0, 1)
@@ -631,17 +628,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
 [node name="wall41" parent="Floor/Walls/Inner Walls" instance=ExtResource("7_kiw3p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
 
-[node name="Thruster" parent="Floor/Walls" instance=ExtResource("8_400sg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 1.5)
+[node name="Thruster5" parent="Floor/Walls" node_paths=PackedStringArray("Compartment") instance=ExtResource("8_mcffj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.046, 0, 4.29782)
+Compartment = NodePath("../../Compartment6")
 
-[node name="Thruster3" parent="Floor/Walls" instance=ExtResource("8_400sg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 4.5)
+[node name="Thruster6" parent="Floor/Walls" node_paths=PackedStringArray("Compartment") instance=ExtResource("8_mcffj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.046, 0, 1.39782)
+Compartment = NodePath("../../Compartment10")
 
-[node name="Thruster2" parent="Floor/Walls" instance=ExtResource("8_400sg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, -1.5)
+[node name="Thruster7" parent="Floor/Walls" node_paths=PackedStringArray("Compartment") instance=ExtResource("8_mcffj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.046, 0, -1.40218)
+Compartment = NodePath("../../Compartment11")
 
-[node name="Thruster4" parent="Floor/Walls" instance=ExtResource("8_400sg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, -4.5)
+[node name="Thruster8" parent="Floor/Walls" node_paths=PackedStringArray("Compartment") instance=ExtResource("8_mcffj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.046, 0, -4.30218)
+Compartment = NodePath("../../Compartment5")
 
 [node name="Compartment" parent="Floor" instance=ExtResource("9_g4kob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, -1.3)
@@ -668,11 +669,19 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.5, 
 PowerDraw = 5
 
 [node name="Compartment5" parent="Floor" instance=ExtResource("9_g4kob")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 0.3, -4)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 0.3, -4.2)
 PowerDraw = 5
 
 [node name="Compartment6" parent="Floor" instance=ExtResource("9_g4kob")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 0.3, 4)
+PowerDraw = 5
+
+[node name="Compartment10" parent="Floor" instance=ExtResource("9_g4kob")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 0.3, 1.5)
+PowerDraw = 5
+
+[node name="Compartment11" parent="Floor" instance=ExtResource("9_g4kob")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 0.3, -1.50747)
 PowerDraw = 5
 
 [node name="Compartment9" parent="Floor" instance=ExtResource("9_g4kob")]
