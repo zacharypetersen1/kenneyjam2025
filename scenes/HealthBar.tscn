@@ -1,23 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3b3xwebu4ak0"]
 
-[ext_resource type="Texture2D" uid="uid://c5w525hbshsgu" path="res://Textures/bar_shadow_square_small.png" id="1_8p41q"]
-[ext_resource type="Texture2D" uid="uid://cn2b52nwxhee6" path="res://Textures/bar_square_gloss_small.png" id="2_6xj70"]
+[ext_resource type="Texture2D" uid="uid://cn2b52nwxhee6" path="res://Textures/bar_square_gloss_small_red.png" id="2_6xj70"]
 [ext_resource type="Script" uid="uid://djy8i2eyebjg1" path="res://scenes/HealthBar.cs" id="3_6xj70"]
 [ext_resource type="Texture2D" uid="uid://cehfd14wn4ere" path="res://Textures/shield.png" id="3_thuo7"]
+[ext_resource type="Texture2D" uid="uid://c85lcr8dacg0f" path="res://Textures/bar_square_small_gray.png" id="4_6xj70"]
 
 [sub_resource type="Theme" id="Theme_p3jmp"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 texture_repeat = 1
-offset_left = 103.0
-offset_top = 46.0
-offset_right = 295.0
-offset_bottom = 78.0
+offset_left = 1049.0
+offset_top = 31.0
+offset_right = 1241.0
+offset_bottom = 63.0
 theme = SubResource("Theme_p3jmp")
 max_value = 1.0
 step = 0.0
 value = 0.785
-texture_under = ExtResource("1_8p41q")
 texture_progress = ExtResource("2_6xj70")
 script = ExtResource("3_6xj70")
 
@@ -33,3 +32,9 @@ modulate = Color(0.803922, 0.0431373, 0.164706, 1)
 position = Vector2(-41, 15.5)
 scale = Vector2(0.95, 0.95)
 texture = ExtResource("3_thuo7")
+
+[node name="BarSquareSmallGray" type="Sprite2D" parent="."]
+modulate = Color(0.505344, 0.505344, 0.505344, 0.513726)
+z_index = -1
+position = Vector2(96, 16)
+texture = ExtResource("4_6xj70")

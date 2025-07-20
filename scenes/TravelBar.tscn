@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhy0im5noxdct"]
+
+[ext_resource type="Texture2D" uid="uid://c85lcr8dacg0f" path="res://Textures/bar_square_small_gray.png" id="1_yrwwy"]
+[ext_resource type="Texture2D" uid="uid://c7xp7qd1hpd5e" path="res://Textures/bar_square_gloss_small_blue.png" id="2_3m2yb"]
+[ext_resource type="FontFile" uid="uid://gj4rw3emqxaj" path="res://Fonts/Kenney Future.ttf" id="3_h7k0b"]
+[ext_resource type="Script" uid="uid://223vdaqthl7f" path="res://scenes/TravelBar.cs" id="3_yrwwy"]
+[ext_resource type="Texture2D" uid="uid://dpf0fmoavpdac" path="res://Textures/warning.png" id="4_82ats"]
+
+[node name="TravelBar" type="TextureProgressBar"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1240.0
+offset_top = 32.0
+offset_right = -1048.0
+offset_bottom = 64.0
+grow_horizontal = 0
+max_value = 1.0
+step = 0.0
+value = 0.615
+texture_progress = ExtResource("2_3m2yb")
+script = ExtResource("3_yrwwy")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 204.0
+offset_right = 244.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 7.0
+offset_right = 273.005
+offset_bottom = 36.695
+theme_override_fonts/normal_font = ExtResource("3_h7k0b")
+text = "No Thrusters Active!"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(10, 15)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_82ats")
+
+[node name="BarSquareSmallGray" type="Sprite2D" parent="."]
+modulate = Color(0.505344, 0.505344, 0.505344, 0.513726)
+z_index = -1
+position = Vector2(96, 16)
+texture = ExtResource("1_yrwwy")

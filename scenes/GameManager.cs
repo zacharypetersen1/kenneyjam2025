@@ -31,6 +31,10 @@ public partial class GameManager : Node
     public double MaxHealth = 100;
     public double Health;
 
+    public float MaxTravelDist = 1000;
+    public float CurTravelDist = 0;
+    public float CurTravelSpeed = 0;
+
     public void Initialize()
     {
         inst = this;
@@ -70,7 +74,12 @@ public partial class GameManager : Node
     {
         if (Health > 0)
         {
-
+            CurTravelDist += CurTravelSpeed * (float)delta;
+            if(CurTravelDist >= MaxTravelDist)
+            {
+                GD.Print("You win!");
+                SetProcess(false);
+            }
         }
         else
         {
