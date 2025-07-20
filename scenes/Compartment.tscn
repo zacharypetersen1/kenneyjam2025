@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://blyoyi2lr88fk" path="res://scenes/Flash.cs" id="3_e8erq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8erq"]
-size = Vector3(0.5, 0.35, 0.7)
+size = Vector3(0.5, 0.35, 0.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ridrp"]
 _surfaces = [{
@@ -53,8 +53,3 @@ mesh = SubResource("ArrayMesh_yhkey")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_d23g8")
 script = ExtResource("3_e8erq")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="Activate"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2437ola88cty"]
+
+[ext_resource type="PackedScene" uid="uid://cmrwnmw0xjb1n" path="res://Models/SpaceKit/rocket_baseA.glb" id="1_e5hhc"]
+[ext_resource type="PackedScene" uid="uid://csduuqook2f07" path="res://Models/SpaceKit/rocket_baseB.glb" id="2_gfv5b"]
+[ext_resource type="PackedScene" uid="uid://ce8p2r8fkfq7t" path="res://Models/SpaceKit/rocket_fuelA.glb" id="3_dag0k"]
+[ext_resource type="PackedScene" uid="uid://dc7xlp4in5unp" path="res://Models/SpaceKit/rocket_topA.glb" id="4_pxhsv"]
+
+[node name="Thruster" type="Node3D"]
+
+[node name="rocket_baseA2" parent="." instance=ExtResource("1_e5hhc")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.9, 0, 0)
+
+[node name="rocket_baseB2" parent="." instance=ExtResource("2_gfv5b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -0.707107, -3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0.707107, -1.5, 0, 0)
+
+[node name="rocket_fuelA2" parent="." instance=ExtResource("3_dag0k")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="rocket_topA2" parent="." instance=ExtResource("4_pxhsv")]
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, -1.9, 0, 0)

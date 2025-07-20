@@ -28,10 +28,6 @@ public partial class GameManager : Node
     Dictionary<ThreatDir, Node3D[]> enemySpots = new Dictionary<ThreatDir, Node3D[]>();
     Dictionary<ThreatDir, EnemyShip[]> enemyShips = new Dictionary<ThreatDir, EnemyShip[]>();
 
-    public List<Compartment> InactivateCompartments = [];
-
-    public List<Compartment> ActiveCompartments = [];
-
     public double MaxHealth = 100;
     public double Health;
 
@@ -40,7 +36,6 @@ public partial class GameManager : Node
         inst = this;
         Health = MaxHealth;
         SpawnPlayers();
-        InactivateCompartments = [.. GetTree().CurrentScene.GetChildren().Where(x => x is Compartment).Select(x => x as Compartment)];
         enemySpots.Add(ThreatDir.North, northEnemySpots);
         enemySpots.Add(ThreatDir.East, eastEnemySpots);
         enemySpots.Add(ThreatDir.South, southEnemySpots);
@@ -74,41 +69,13 @@ public partial class GameManager : Node
     {
         if (Health > 0)
         {
-            if (ActiveCompartments.Count == 0 && InactivateCompartments.Count > 0) ActivateNext();
-            for (var i = 0; i < ActiveCompartments.Count; i++)
-            {
-                var compartment = ActiveCompartments[i];
-                if (compartment.Active)
-                {
-                    if (!compartment.CanDrain()) Health = Math.Max(0, Health - delta * compartment.PowerDraw);
-                    else if (compartment.Drain(delta))
-                    {
-                        Deactivate(compartment);
-                        i--;
-                    }
-                }
-            }
+
         }
         else
         {
             GD.Print("Game Over!");
             SetProcess(false);
         }
-    }
-
-    public void ActivateNext()
-    {
-        var next = InactivateCompartments[Random.Shared.Next(0, InactivateCompartments.Count)];
-        InactivateCompartments.Remove(next);
-        ActiveCompartments.Add(next);
-        next.Queue(5, Random.Shared.Next(5, 10));
-    }
-
-    public void Deactivate(Compartment compartment)
-    {
-        ActiveCompartments.Remove(compartment);
-        InactivateCompartments.Add(compartment);
-        compartment.Deactivate();
     }
 
     public bool IsSpotAvailable(ThreatDir dir)

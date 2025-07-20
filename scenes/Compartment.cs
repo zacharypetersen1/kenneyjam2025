@@ -8,34 +8,17 @@ public partial class Compartment : StaticBody3D
     [Export]
     public int PowerDraw = 1;
 
-    public double PowerRequired = 0;
+    public bool HasPower() => Inserted is not null && Inserted.Charge > 0;
 
-    public bool Active = false;
-
-    public void Queue(int delay, int powerRequired)
+    public void Insert(Battery battery)
     {
-        var timer = GetNode<Timer>("Timer");
-        timer.Start(delay);
-        PowerRequired = powerRequired;
+        Inserted = battery;
     }
 
-    public void Activate()
+    public Battery Remove()
     {
-        Active = true;
-        GD.Print("Die Humans!");
-    }
-
-    public void Deactivate()
-    {
-        Active = false;
-        GD.Print("All Done!");
-    }
-
-    public bool CanDrain() => Inserted is not null && Inserted.Charge > 0;
-
-    public bool Drain(double delta)
-    {
-        PowerRequired -= PowerDraw * delta;
-        return PowerRequired <= 0;
+        var battery = Inserted;
+        Inserted = null;
+        return battery;
     }
 }

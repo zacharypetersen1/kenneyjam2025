@@ -2,10 +2,12 @@ using Godot;
 
 public partial class MainMenu : Control
 {
+    [Export]
+    public PackedScene GameScene;
+
     public void Play()
     {
-        var gameScene = GD.Load<PackedScene>("res://scenes/MovementPlayground.tscn");
-        GetTree().ChangeSceneToPacked(gameScene);
+        GetTree().ChangeSceneToPacked(GameScene);
     }
 
     public override void _Input(InputEvent @event)

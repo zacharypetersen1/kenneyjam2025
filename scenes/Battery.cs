@@ -3,6 +3,9 @@ using System;
 
 public partial class Battery : RigidBody3D
 {
+    [Export]
+    public float MoveSpeedModifier = 1;
+
     public Compartment Compartment { get; set; }
 
     public double MaxCharge = 100;
@@ -12,18 +15,18 @@ public partial class Battery : RigidBody3D
     public void Place(Compartment compartment)
     {
         this.Compartment = compartment;
-        compartment.Inserted = this;
+        compartment.Insert(this);
         DischargeRate = compartment.PowerDraw;
     }
 
     public void Remove()
     {
-        Compartment.Inserted = null;
+        Compartment.Remove();
         DischargeRate = 0;
     }
 
     public override void _Process(double delta)
     {
-        if (DischargeRate != 0) Charge = Math.Max(0, Charge - DischargeRate * delta);
+        if (DischargeRate != 0) Charge = Math.Clamp(Charge - DischargeRate * delta, 0, MaxCharge);
     }
 }

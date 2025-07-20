@@ -112,7 +112,7 @@ public partial class Player : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         var direction = Input.GetVector(PlayerInput.Left, PlayerInput.Right, PlayerInput.Up, PlayerInput.Down);
-        var velocity = direction * Speed;
+        var velocity = direction * (Speed * (heldBattery?.MoveSpeedModifier ?? 1));
         Velocity = new Vector3(velocity.X, 0, velocity.Y) + GetGravity();
         if (direction.LengthSquared() > 0) Rotation = new Vector3(0, -direction.Angle(), 0);
         MoveAndSlide();

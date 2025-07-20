@@ -38,6 +38,14 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bdc66v6nqyl3e"
 }
+},
+"nodes": {
+"PATH:floor-panel": {
+"generate/physics": true,
+"physics/shape_type": 3,
+"primitive/position": Vector3(0, 0.15, 0),
+"primitive/size": Vector3(1, 0.3, 1)
+}
 }
 }
 gltf/naming_version=1
