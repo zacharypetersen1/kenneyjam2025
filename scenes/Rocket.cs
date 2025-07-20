@@ -7,7 +7,9 @@ public partial class Rocket : Node3D
     public GpuParticles3D smoke, explTrail, explCore;
     [Export]
     public Node3D visual;
-    float travelTime = 0.45f;
+    [Export]
+    public float speed = 5;
+    public float travelTime = 0.45f;
     float curTime;
     float curPercent = 0;
     public Vector3 initialPos;

@@ -63,6 +63,8 @@ public partial class Turret : Node3D
                     rocket.GlobalRotation = muzzle.GlobalRotation;
                     rocket.initialPos = muzzle.GlobalPosition;
                     rocket.targetPos = target.GetParent<Node3D>().GlobalPosition;
+                    float dist = (rocket.initialPos - rocket.targetPos).Length();
+                    rocket.travelTime = dist / rocket.speed;
                     rocket.target = target;
                     cooldown = fireRate;
                 }
