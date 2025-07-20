@@ -9,7 +9,7 @@ radius = 0.2
 height = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6fml"]
-size = Vector3(0.4, 0.8, 0.4)
+size = Vector3(0.4, 1, 0.4)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_p0vlq")
@@ -21,7 +21,7 @@ shape = SubResource("CapsuleShape3D_cij07")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.999566, 0, 0, 0, 0.999566, 0, 0, 0, 0.999566, 0.4, 0.4, 0)
+transform = Transform3D(0.999566, 0, 0, 0, 0.999566, 0, 0, 0, 0.999566, 0.4, 0.499957, 0)
 shape = SubResource("BoxShape3D_v6fml")
 
 [node name="AstronautA" parent="." instance=ExtResource("2_v6fml")]
