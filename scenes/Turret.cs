@@ -6,8 +6,6 @@ public partial class Turret : Node3D
     int rocketsFired = 0;
     [Export]
     public float fireRate = 1;
-    [Export]
-    public ThreatDir aimDir;
     float t = 0;
     public bool isPowered = false;
     [Export]
@@ -50,7 +48,7 @@ public partial class Turret : Node3D
         if(isPowered)
         {
             cooldown = Mathf.Max(0, cooldown - (float)delta);
-            EnemyShip target = GameManager.inst.GetLowestHPShipInDir(aimDir);
+            EnemyShip target = GameManager.inst.GetLowestHPShip();
             if(target is not null)
             {
                 LookAt(target.GlobalPosition, new Vector3(0, 1, 0));

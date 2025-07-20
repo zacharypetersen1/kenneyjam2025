@@ -13,8 +13,7 @@ public partial class EnemyShip : Node3D
     public UIProgressBar attackProgressBar;
     [Export]
     public GpuParticles3D[] playOnAttack = new GpuParticles3D[2];
-    public ThreatDir dir;
-    public int spot = -1;
+    public int index = -1;
     float lerpSpeed = .1f;
     float curAttackProgress = 0;
     override public void _PhysicsProcess(double delta)
@@ -27,7 +26,7 @@ public partial class EnemyShip : Node3D
         hp -= dmg;
         if(hp <= 0)
         {
-            GameManager.inst.ClearEnemyShipSpot(dir, spot);
+            GameManager.inst.ClearEnemyShipIndex(index);
             QueueFree();
         }
     }

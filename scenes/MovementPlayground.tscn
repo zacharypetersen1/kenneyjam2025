@@ -140,11 +140,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0,
 [node name="Window6" parent="." instance=ExtResource("8_imhth")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, 1.5)
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("northEnemySpots", "eastEnemySpots", "southEnemySpots", "westEnemySpots", "PlayerSpawnPoints") instance=ExtResource("7_heu5x")]
-northEnemySpots = [NodePath("../EnemyWaypoints/North1"), NodePath("../EnemyWaypoints/North2"), NodePath("../EnemyWaypoints/North3")]
-eastEnemySpots = [NodePath("../EnemyWaypoints/East1"), NodePath("../EnemyWaypoints/East2"), NodePath("../EnemyWaypoints/East3")]
-southEnemySpots = [NodePath("../EnemyWaypoints/South1"), NodePath("../EnemyWaypoints/South2"), NodePath("../EnemyWaypoints/South3")]
-westEnemySpots = [NodePath("../EnemyWaypoints/West1"), NodePath("../EnemyWaypoints/West2"), NodePath("../EnemyWaypoints/West3")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("PlayerSpawnPoints") instance=ExtResource("7_heu5x")]
 PlayerSpawnPoints = [NodePath("../PlayerSpawnPoints/PlayerSpawn"), NodePath("../PlayerSpawnPoints/PlayerSpawn2"), NodePath("../PlayerSpawnPoints/PlayerSpawn3"), NodePath("../PlayerSpawnPoints/PlayerSpawn4")]
 
 [node name="EnemyWaypoints" type="Node3D" parent="."]
@@ -231,7 +227,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1,
 
 [node name="Turret" parent="TurretBase" node_paths=PackedStringArray("compartment") instance=ExtResource("11_h3kco")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
-aimDir = 1
 compartment = NodePath("../../Compartment")
 
 [node name="HealthBar" parent="." instance=ExtResource("11_4ctss")]
