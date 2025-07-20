@@ -66,6 +66,7 @@ public partial class Turret : Node3D
                     float dist = (rocket.initialPos - rocket.targetPos).Length();
                     rocket.travelTime = dist / rocket.speed;
                     rocket.target = target;
+                    rocket.targetSlot = target.index;
                     cooldown = fireRate;
                 }
             }

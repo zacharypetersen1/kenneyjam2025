@@ -17,6 +17,7 @@ public partial class Rocket : Node3D
     public EnemyShip target;
     bool destroyTimerOn = false;
     float destroyTimer = 1f;
+    public int targetSlot = -1;
 
     override public void _Process(double delta)
     {
@@ -41,9 +42,9 @@ public partial class Rocket : Node3D
 
     void Explode()
     {
-        if(target is not null)
+        if(GameManager.inst.enemyShips[targetSlot] != null)
         {
-            target.TakeDamage(1);
+            GameManager.inst.enemyShips[targetSlot].TakeDamage(1);
         }
         visual.Visible = false;
         smoke.Emitting = false;
