@@ -48,6 +48,7 @@ public partial class GameManager : Node
 
         for (int i = 0; i < 4; i++)
         {
+            if(i == 2) continue;
             for (int j = 0; j < 3; j++)
             {
                 SpawnEnemyShip((ThreatDir)i);
