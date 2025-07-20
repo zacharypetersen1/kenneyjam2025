@@ -6,6 +6,8 @@ public partial class EnemyShip : Node3D
     [Export]
     public float attackSpeed = 10;
     [Export]
+    public float attackDmg = 5;
+    [Export]
     public float hp = 5;
     [Export]
     public UIProgressBar attackProgressBar;
@@ -33,7 +35,7 @@ public partial class EnemyShip : Node3D
         curAttackProgress += (float)delta;
         if(curAttackProgress > attackSpeed)
         {
-            // do attack
+            GameManager.inst.TakeDamage(attackDmg);
             curAttackProgress -= attackSpeed;
         }
         attackProgressBar.SetProgress(curAttackProgress / attackSpeed);

@@ -166,4 +166,9 @@ public partial class GameManager : Node
     {
         enemyShips[dir][spot] = null;
     }
+
+    public void TakeDamage(float dmg)
+    {
+        Health -= (double)dmg;
+    }
 }
