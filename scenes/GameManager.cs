@@ -50,7 +50,7 @@ public partial class GameManager : Node
         if (Health > 0)
         {
             CurTravelDist += CurTravelSpeed * (float)delta;
-            if(CurTravelDist >= MaxTravelDist)
+            if (CurTravelDist >= MaxTravelDist)
             {
                 GD.Print("You win!");
                 SetProcess(false);

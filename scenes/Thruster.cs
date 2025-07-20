@@ -28,6 +28,7 @@ public partial class Thruster : Node3D
         else if(isActive && !hasPower)
         {
             GameManager.inst.CurTravelSpeed -= ThrustAmount;
+            isActive = false;
             thrusterEffect.Emitting = false;
         }
     }

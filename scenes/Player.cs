@@ -135,6 +135,7 @@ public partial class Player : CharacterBody3D
         if (heldBattery is not null)
         {
             newTargetCompartment = GetNode<Area3D>("Area3D").GetOverlappingBodies().FirstOrDefault(x => x is Compartment) as Compartment;
+            if (newTargetCompartment?.Inserted is not null) newTargetCompartment = null;
         }
         if (newTargetCompartment != targetCompartment)
         {
