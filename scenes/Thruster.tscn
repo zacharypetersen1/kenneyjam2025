@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfkyxsuromfp8" path="res://scenes/Thruster.cs" id="1_6hjk2"]
 [ext_resource type="PackedScene" uid="uid://c6rggnllvb0mr" path="res://scenes/Thrusters.tscn" id="1_028xx"]
-[ext_resource type="Material" uid="uid://cucfu8bhejthk" path="res://Materials/ThrusterParticle.tres" id="2_0hye8"]
+[ext_resource type="Material" uid="uid://tu3xpiw5e87u" path="res://Materials/ThrusterParticle.tres" id="2_0hye8"]
 [ext_resource type="Material" uid="uid://dskqmwg8vtqmm" path="res://Materials/ExplosionColor.tres" id="2_13p1b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7fyd"]
