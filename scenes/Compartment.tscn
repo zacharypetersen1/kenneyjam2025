@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://nes42k5wbx7o"]
+[gd_scene load_steps=11 format=4 uid="uid://nes42k5wbx7o"]
 
 [ext_resource type="Script" uid="uid://jaxmjkmdbo3r" path="res://scenes/Compartment.cs" id="1_l1h3h"]
 [ext_resource type="Script" uid="uid://blyoyi2lr88fk" path="res://scenes/Flash.cs" id="3_e8erq"]
@@ -128,6 +128,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5lyjm")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1h3h"]
+albedo_color = Color(0.835294, 0.607843, 0.145098, 1)
+
 [node name="Compartment" type="StaticBody3D" node_paths=PackedStringArray("BatteryLocation")]
 script = ExtResource("1_l1h3h")
 BatteryLocation = NodePath("BatteryLocation")
@@ -139,6 +142,7 @@ shape = SubResource("BoxShape3D_e8erq")
 [node name="machine_barrelLarge" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_d23g8")
 skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_l1h3h")
 script = ExtResource("3_e8erq")
 
 [node name="BatteryLocation" type="Marker3D" parent="."]
