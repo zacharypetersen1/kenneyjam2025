@@ -14,15 +14,26 @@ public partial class MainMenu : Control
     {
         if (@event.IsMatch(new InputEventJoypadButton() { Device = -1, ButtonIndex = JoyButton.A, Pressed = true }))
         {
-            if (!Players.PlayerIds.Contains(@event.Device))
+            if (Players.PlayerIds.Count < Players.Colors.Length)
             {
-                GetNode("PlayerStatuses").GetChild(Players.PlayerIds.Count).GetNode<Label>("Label").Text = $"Player {Players.PlayerIds.Count + 1} Joined";
-                Players.PlayerIds.Add(@event.Device);
-                GetNode<Button>("CenterContainer/Play").Disabled = false;
-                GetNode<Button>("CenterContainer/Play").Text = "Press Start";
+                if (!Players.PlayerIds.Contains(@event.Device))
+                {
+                    GetNode("VBoxContainer/PlayerStatuses").GetChild(Players.PlayerIds.Count).GetNode<Label>("Label").Text = $"Player {Players.PlayerIds.Count + 1} Joined";
+                    Players.PlayerIds.Add(@event.Device);
+                    GetNode<Label>("VBoxContainer/CenterContainer/Label").Text = "Press Start";
+                }
             }
         }
-        if (@event.IsMatch(new InputEventJoypadButton() { Device = -1, ButtonIndex = JoyButton.Start, Pressed = true }))
+        // else if (@event.IsMatch(new InputEventJoypadButton() { Device = -1, ButtonIndex = JoyButton.B, Pressed = true }))
+        // {
+        //     var playerIndex = Players.PlayerIds.IndexOf(@event.Device);
+        //     if (playerIndex != -1)
+        //     {
+        //         GetNode("VBoxContainer/PlayerStatuses").GetChild(playerIndex).GetNode<Label>("Label").Text = "Press A to Join";
+        //         Players.PlayerIds.Remove(@event.Device);
+        //     }
+        // }
+        else if (@event.IsMatch(new InputEventJoypadButton() { Device = -1, ButtonIndex = JoyButton.Start, Pressed = true }))
         {
             if (Players.PlayerIds.Count > 0) Play();
         }
