@@ -49,5 +49,4 @@ shape = SubResource("BoxShape3D_3idvt")
 [node name="wall-window" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_fwka2")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_gd0sp")
 script = ExtResource("3_3idvt")
