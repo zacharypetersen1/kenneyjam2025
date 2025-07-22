@@ -46,6 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_x72rb")
 [node name="Thruster" type="Node3D" node_paths=PackedStringArray("thrusterEffect")]
 script = ExtResource("1_6hjk2")
 thrusterEffect = NodePath("GPUParticles3D")
+ThrustAmount = 4.75
 
 [node name="Thruster" parent="." instance=ExtResource("1_028xx")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

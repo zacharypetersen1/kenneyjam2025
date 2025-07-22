@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf4ef20iweyem"
 path.s3tc="res://.godot/imported/bar_square_gloss_large.png-b4f2d42b03a9d9cf4a20f82951f01b96.s3tc.ctex"
+path.etc2="res://.godot/imported/bar_square_gloss_large.png-b4f2d42b03a9d9cf4a20f82951f01b96.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/bar_square_gloss_large.png"
-dest_files=["res://.godot/imported/bar_square_gloss_large.png-b4f2d42b03a9d9cf4a20f82951f01b96.s3tc.ctex"]
+dest_files=["res://.godot/imported/bar_square_gloss_large.png-b4f2d42b03a9d9cf4a20f82951f01b96.s3tc.ctex", "res://.godot/imported/bar_square_gloss_large.png-b4f2d42b03a9d9cf4a20f82951f01b96.etc2.ctex"]
 
 [params]
 

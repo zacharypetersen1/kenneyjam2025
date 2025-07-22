@@ -22,6 +22,7 @@ public partial class Battery : RigidBody3D
     public void Remove()
     {
         Compartment.Remove();
+        Compartment = null;
         DischargeRate = 0;
     }
 

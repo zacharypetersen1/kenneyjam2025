@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://p8f2ukfbmtuh"
 path.s3tc="res://.godot/imported/barHorizontal_yellow_mid.png-d3dc580f34dcff8492ea43a60aa0caf4.s3tc.ctex"
+path.etc2="res://.godot/imported/barHorizontal_yellow_mid.png-d3dc580f34dcff8492ea43a60aa0caf4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/barHorizontal_yellow_mid.png"
-dest_files=["res://.godot/imported/barHorizontal_yellow_mid.png-d3dc580f34dcff8492ea43a60aa0caf4.s3tc.ctex"]
+dest_files=["res://.godot/imported/barHorizontal_yellow_mid.png-d3dc580f34dcff8492ea43a60aa0caf4.s3tc.ctex", "res://.godot/imported/barHorizontal_yellow_mid.png-d3dc580f34dcff8492ea43a60aa0caf4.etc2.ctex"]
 
 [params]
 

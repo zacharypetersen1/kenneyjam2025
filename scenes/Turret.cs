@@ -34,7 +34,7 @@ public partial class Turret : Node3D
     override public void _Process(double delta)
     {
         t += (float)delta * 5;
-        isPowered = compartment.Inserted != null && compartment.Inserted.Charge > 0;
+        isPowered = compartment.HasPower();
         if(isPowered)
         {
             mat.Emission = new Color(0,1,0,1);
